@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DocumentExtraction",
+  "type": "object",
+  "properties": {
+    "document_id": {
+      "type": "string"
+    },
+    "document_type": {
+      "type": "string",
+      "enum": [
+        "purchase_order",
+        "delivery_notice",
+        "quotation",
+        "other"
+      ]
+    },
+    "po_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "product_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "supplier": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "quantity": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "original_delivery": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "revised_delivery": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "unit_price": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "currency": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "needs_review": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "document_id",
+    "document_type",
+    "needs_review"
+  ],
+  "additionalProperties": false
+}
