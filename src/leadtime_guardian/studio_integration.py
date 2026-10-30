@@ -23,6 +23,19 @@ def documents_from_export(raw):
         raise AdapterError("Studio output explicitly requires review or reports an error")
     if raw.get("status") in {"failed", "cancelled", "incomplete", "queued", "in_progress"}:
         raise AdapterError("Studio job did not complete")
+    # Observed native Studio Instruct JSON download (C001, config v4).
+    # Do not mutate its content or mistake its metadata for extraction facts.
+    if "content" in raw and isinstance(raw.get("metadata"), dict):
+        meta = raw["metadata"]
+        if (not isinstance(raw["content"], str)
+                or not isinstance(meta.get("job_execution_id"), str)
+                or not meta["job_execution_id"].startswith("job_")
+                or not isinstance(meta.get("step_run_id"), str)
+                or not meta["step_run_id"]):
+            raise AdapterError("invalid native Studio Instruct metadata/content")
+        if any(key in raw for key in ("documents", "output", "output_text")):
+            raise AdapterError("ambiguous native Studio Instruct envelope")
+        return documents_from_export(json.loads(raw["content"]))
     if "documents" in raw:
         if not isinstance(raw["documents"], list):
             raise AdapterError("documents must be an array")

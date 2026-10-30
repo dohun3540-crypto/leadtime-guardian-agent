@@ -19,6 +19,7 @@ def main():
     parser.add_argument("--output", type=Path)
     parser.add_argument("--case-id", default="SYN-C001")
     parser.add_argument("--config-version", default="UNVERIFIED")
+    parser.add_argument("--config-id", help="Pin a saved Studio cfg_ version on the API request")
     parser.add_argument("--prompt-version", default="UNVERIFIED")
     parser.add_argument("--timeout-seconds", type=float, default=180)
     parser.add_argument("--preflight", action="store_true")
@@ -52,7 +53,7 @@ def main():
     meta = run_agent(client, args.pdf, args.agent_id, args.output, case_id=args.case_id,
                      config_version=args.config_version, prompt_version=args.prompt_version,
                      execution_mode="live_agents_api", timeout_seconds=args.timeout_seconds,
-                     transport_errors=(APIError,))
+                     transport_errors=(APIError,), config_id=args.config_id)
     print(json.dumps(meta, ensure_ascii=False, indent=2))
     return 0 if meta["status"] == "COMPLETED" else 2
 

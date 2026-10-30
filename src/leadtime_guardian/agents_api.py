@@ -47,14 +47,18 @@ def snapshot(response):
 
 def run_agent(client, paths, agent_id, destination, *, case_id, config_version,
               prompt_version, execution_mode="contract_test", timeout_seconds=180,
-              poll_seconds=2, clock=time.monotonic, sleep=time.sleep, transport_errors=()):
+              poll_seconds=2, clock=time.monotonic, sleep=time.sleep, transport_errors=(),
+              config_id=None):
     """Upload all PDFs as one job, archive snapshots, and stop safely on errors.
 
     No automatic POST retry or fixture fallback. The CLI constructs the live SDK
     client with max_retries=0 so an unknown submission outcome is never replayed.
     """
-    if execution_mode not in {"live_agents_api", "contract_test"}:
+    if execution_mode not in {"live_agents_api", "contract_test", "sdk_http_mock"}:
         raise ValueError("invalid execution mode")
+    if config_id is not None and (not isinstance(config_id, str)
+                                  or not re.fullmatch(r"cfg_[A-Za-z0-9]+", config_id)):
+        raise ValueError("invalid config ID")
     if (not math.isfinite(timeout_seconds) or timeout_seconds <= 0
             or not math.isfinite(poll_seconds) or not 0 < poll_seconds <= 60):
         raise ValueError("invalid timeout or polling interval")
@@ -65,6 +69,7 @@ def run_agent(client, paths, agent_id, destination, *, case_id, config_version,
     (destination / "inputs").mkdir()
     meta = {"execution_mode": execution_mode, "case_id": case_id, "agent_id": agent_id,
             "config_version": config_version, "prompt_version": prompt_version,
+            "requested_config_id": config_id,
             "workflow_config_verified": False, "base_url": BASE_URL,
             "started_at_utc": datetime.now(UTC).isoformat(),
             "status": "NEEDS_REVIEW", "studio_status": None, "job_id": None,
@@ -91,10 +96,16 @@ def run_agent(client, paths, agent_id, destination, *, case_id, config_version,
             write_json(destination / "run_metadata.json", meta)
         request = {"model": agent_id, "include": ["last"],
                    "input": [{"role": "user", "content": content}]}
+        # Upstage extension absent from the OpenAI SDK's typed signature.
+        if config_id is not None:
+            request["config_id"] = config_id
         write_json(destination / "job_request.json", request)
         meta["job_submission_attempted"] = True
         write_json(destination / "run_metadata.json", meta)
-        response = snapshot(client.responses.create(**request))
+        sdk_request = {key: value for key, value in request.items() if key != "config_id"}
+        if config_id is not None:
+            sdk_request["extra_body"] = {"config_id": config_id}
+        response = snapshot(client.responses.create(**sdk_request))
         meta["job_submitted"] = True
         started, index = clock(), 0
         while True:

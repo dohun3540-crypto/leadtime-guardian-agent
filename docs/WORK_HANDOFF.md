@@ -1,3 +1,61 @@
+# Chrome Work checkpoint - 2026-10-30 KST (latest, supersedes historical status below)
+
+**User requested a preservation checkpoint due to remaining usage. Stop expanding features.**
+
+## Saved Studio workflow and actual C001 success
+
+- Repository/branch/PR remain `dohun3540-crypto/leadtime-guardian-agent`, `feat/specs-data-engine-20261029`, PR #11. No main merge or force push.
+- Starting HEAD confirmed **0d6c31d154439b3a7d5a582d0d32787a04d933af**. The final checkpoint SHA is the current PR HEAD; this file cannot contain its own SHA.
+- Authenticated Studio account and workspace were visibly verified. Existing Workflow 1 was renamed **LeadTime Guardian - B+C3 V1**.
+- Correct observed Agent ID: **`agt_bXRXFSAgFmBayPjZF7VqRQ`**.
+- Previously supplied `agt_bXRXFSAqFmBayPjZF7VgRQ` is a different identifier (two characters differ). Do not reuse it. It likely explains the prior 404; no deleted workflow is assumed.
+- Saved **config version 4**, **`cfg_SZi6qfyZ6XFoNszpXQK5xQ`**.
+- Verified URL: https://studio.upstage.ai/agents/agt_bXRXFSAgFmBayPjZF7VqRQ?configVer=4
+- Actual native export: **`configs/studio_native/config_v4.export.json`**. This is an actual Studio download; prior design JSON is not.
+- Actual topology: Parse -> file-boundary split/Classify -> 4 document-type Extract schemas -> MergeDocuments -> NormalizeDocuments Instruct. Strict matching/validation runs in Python. Native Match/Validate nodes were not configured.
+- Studio Extract supports single field types; nullable JSON-schema unions were not usable in its UI. Intermediate quotation data is a one-row table, converted by Instruct to the existing normalized quote object. Studio removes primitive-array warnings from Extract; Instruct generates the final warnings list. No arithmetic is performed by the prompt.
+- Existing original C001 PDFs were uploaded together as **one 3-page case**. They were not regenerated or modified.
+- Actual job **`job_gPmEYKzuJdBA6BmKhVnujs`**, final step **`63f6a860-7c86-5036-b32d-6eae38ca7677`**. It completed.
+- Actual output, step downloads, screenshot, hashes and analysis: **`data/results/studio_runs/C001_20261030_v4/`**. See its README and `execution_record.json`.
+- Real extracted PO1 / A / R1 / 100 EA; original 2026-11-03, revised 2026-11-08; Q1/S1 capacity 60, arrival 2026-11-04, unit price 1000.00 KRW, shipping 500 KRW.
+- Python using that unchanged prediction: **baseline 0 / revised 60 / additional 60 / KRW 60,500.00**, status OK. No expected/gold values substituted.
+- Native extraction ZIP uses a `gold/` directory name. These are downloaded predictions, not human-reviewed labels. All gold labels remain DRAFT; `evidence_verified_against_pdf=false`. No extraction accuracy percentage is measured.
+
+## Saved integration and validation
+
+- `studio_integration.py`: observed native Instruct `{content: JSON-string, metadata: {job_execution_id, step_run_id, ...}}` support, with metadata/ambiguity checks and recursive gold-wrapper rejection. Complete and successfully used for C001.
+- Existing `engine.py` and `studio_adapter.py` are unchanged.
+- Added **6** envelope regression cases to `tests/test_studio_integration.py`.
+- Official Upstage docs rechecked: https://console.upstage.ai/docs/agents/jobs and https://console.upstage.ai/api/agents/jobs/create-job . Official client remains OpenAI SDK at `https://api.upstage.ai/v2`; files use `purpose=user_data`, job POST `/responses`, GET `/responses/{id}`, include last/all.
+- Added optional `--config-id`/`config_id` pinning: Upstage's extension is sent via SDK `extra_body`. Existing config-version metadata alone does not pin a server config. Live runner still has max_retries=0.
+- Installed and exercised actual **OpenAI SDK 2.54.0 / httpx 0.28.1** over a loopback **HTTP server**, not just FakeClient. **13 new tests** cover multipart bytes, purpose, auth-header presence, one grouped job, config pin, polling, preserved extra step fields, 401/429/500, upload/submit failures, unknown submit timeout/no replay, deadline and history failure. Dummy credentials only; no auth values or exception bodies stored in artifacts.
+- HTTP tests are labeled **sdk_http_mock** and do not represent live Upstage inference. Historical FakeClient **13** tests remain distinct. Actual Agents API network requests: **0**; no real API key is configured.
+- Latest local **Python 3.12.14: pytest 80 passed; Ruff passed**. CI now installs `requirements-agents.txt` to run actual-SDK HTTP tests on Python 3.11 as well. GitHub CI must be checked against the final checkpoint commit.
+- `docs/checkpoint_20261030/validation.json` records local checks. No browser credentials, cookies or API keys were copied or persisted.
+
+## Unexecuted extension assets already generated - preserve, do not call measured results
+
+- Before the user requested this checkpoint, `scripts/generate_synthetic_suite.py` generated **C002-C020: 57 new PDFs**, trusted base inputs, manifests and generator-authored `extraction_gold.DRAFT.json` files.
+- Together with preserved C001, there are **20 cases / 60 source PDFs**. To minimize checkpoint writes, the **57 new PDF originals are preserved byte-for-byte in `data/cases/SYN-C002-C020_DRAFT_PDFs.tar.xz`**; trusted inputs, manifests and DRAFT labels are individual Git files. From the repository root run `tar -xJf data/cases/SYN-C002-C020_DRAFT_PDFs.tar.xz` to restore their expected `data/cases/SYN-C002/...` paths. No original C001 PDF is in that archive. `case_types.csv` records C001 tested and all extensions untested; human-label review false for all.
+- The new PDFs were rendered for layout review, checked as one page each with case ID text; Korean font rendered. They are DRAFT generator assets, not human-approved truth. The generator requires `--font` pointing to a Korean TTF and refuses existing case directories; it never regenerates C001.
+- C013 mismatch and C017 Korean date **have NOT been uploaded or run**. Partial receipts/multiple orders, duplicates/missing/contradictory docs and the rest of the suite also remain unexecuted.
+- C008 explicitly prints receipt-specific quantities (40/60), and its notice affects R2 only. Aggregate unallocated PO quantities remain unsupported by the strict importer. Confirm against actual predictions before extending it.
+- `configs/studio_workflow.import.json`, `studio_classify.import.json`, `studio_extraction.import.json` are development/import artifacts; only `configs/studio_native/config_v4.export.json` is the verified saved native configuration. Use that actual export to resume, not intermediate drafts.
+
+## Resume in another Work session
+
+1. Read the latest PR #11 HEAD and this top checkpoint section. Preserve newer remote changes; no reset/force push. Read `data/results/studio_runs/C001_20261030_v4/README.md` and `execution_record.json`.
+2. Fetch the branch, install `requirements-agents.txt`, run pytest/Ruff. Review latest CI. PDF generation additionally requires ReportLab and a Korean TTF; existing PDFs need no generation.
+3. Studio login sessions do not transfer through Git. Connect/authenticate safely, verify saved config v4 and correct Agent ID from the main Agent list. Use a secure authentication handoff; never ask for secrets in chat.
+4. Run C013 first, require NEEDS_REVIEW without changing its extracted PO999 to PO1. Then C017 date normalization. Then C008 partial arrivals/multiple orders and duplicate/missing/contradictory document cases. Archive raw native outputs, job IDs/config IDs and Python results separately for every run.
+5. Only actual prediction cases can be evaluated. Independently human-review DRAFT gold and source evidence. Do not call ZIP packaging labels gold, empty evidence arrays or schema success independent source verification.
+6. Live Agents API still needs securely configured UPSTAGE_API_KEY and network access. Do not mint or expose credentials just to continue. The verified Studio Web path already works without an API key.
+7. Preserve next changes to the same PR branch. Final LMS submission, real purchases and emails were not performed. LMS submission requires user review/approval.
+
+---
+
+# Historical Windows handoff (preserved for context; 0-run statements below are obsolete)
+
 # LeadTime Guardian Agent — Chrome ChatGPT Work 인계
 
 기준일: **2026-10-30 KST**. 새 기능 개발을 중단하고 현재 결과를 보존한 인계 문서다.

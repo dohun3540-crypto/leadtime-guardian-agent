@@ -1,3 +1,15 @@
+# 2026-10-30 Chrome checkpoint update
+
+Actual C001 Studio Web execution and Python integration succeeded (see `WORK_HANDOFF.md`). Live Agents API requests remain 0. Actual OpenAI SDK 2.54.0 + loopback HTTP server tests: 13 passed, separate from 13 FakeClient tests. Total suite 80 passed; Ruff passed.
+
+Correct Agent ID is **agt_bXRXFSAgFmBayPjZF7VqRQ**. Saved Studio v4 Config ID is **cfg_SZi6qfyZ6XFoNszpXQK5xQ**. Use `--config-id cfg_SZi6qfyZ6XFoNszpXQK5xQ` to pin an API run; this is sent as the Upstage `config_id` via SDK `extra_body`. `--config-version` remains an audit label.
+
+Install `requirements-agents.txt`. No real API key is configured; do not request it in chat. Native UI Instruct exports are now accepted by the strict import boundary and original bytes are archived. See actual evidence at `data/results/studio_runs/C001_20261030_v4/`.
+
+The sections below are historical pre-integration status; their missing-SDK and 0-Studio-run statements no longer describe this checkpoint.
+
+---
+
 # Official Agents API runner - implemented, not live-tested
 
 ## Current status (2026-10-30 KST)

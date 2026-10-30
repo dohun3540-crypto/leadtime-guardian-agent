@@ -148,3 +148,28 @@ def test_malformed_export_archives_original_and_reports_blocked(tmp_path, inputs
 def test_noncompleted_job_never_calculates(status):
     with pytest.raises(AdapterError, match="did not complete"):
         documents_from_export({"status": status, "documents": []})
+
+
+def test_observed_native_instruct_envelope_preserves_predictions():
+    documents = [{"document_id": "RAW-UNCHANGED", "warnings": ["retain this"]}]
+    raw = {"content": json.dumps({"documents": documents}),
+           "metadata": {"job_execution_id": "job_OBSERVED", "step_run_id": "step_OBSERVED"}}
+    assert documents_from_export(raw) == documents
+
+
+@pytest.mark.parametrize("change", [
+    {"content": {}}, {"metadata": {}}, {"documents": []}, {"output_text": "{}"},
+])
+def test_native_instruct_missing_or_ambiguous_envelope_is_rejected(change):
+    raw = {"content": '{"documents": []}',
+           "metadata": {"job_execution_id": "job_TEST", "step_run_id": "step_TEST"}}
+    raw.update(change)
+    with pytest.raises(AdapterError):
+        documents_from_export(raw)
+
+
+def test_native_instruct_cannot_hide_gold_wrapper():
+    raw = {"content": '{"human_reviewed": false, "documents": []}',
+           "metadata": {"job_execution_id": "job_TEST", "step_run_id": "step_TEST"}}
+    with pytest.raises(AdapterError, match="gold/fixture"):
+        documents_from_export(raw)
