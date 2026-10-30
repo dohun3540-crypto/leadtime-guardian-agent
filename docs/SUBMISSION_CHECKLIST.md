@@ -1,13 +1,16 @@
-# Submission checklist
-- [ ] **Actual** Studio workflow config JSON exported from Studio (not handwritten schema)
-- [x] 20 synthetic cases/60 test PDF files generated locally (contents require review)
-- [ ] Human-reviewed document gold JSON; source-derived draft available
-- [x] Case-type index CSV generated locally
-- [x] One-page workflow design PDF produced locally; layout requires organizer format confirmation
-- [ ] Actual Studio dataset run JSON; local Python output is **not** Studio output
-- [ ] Demo screen video captured from running system
-- [ ] Presentation PDF (six-slide **draft** produced locally)
-- [ ] Optional service demo URL
-- [x] Optional GitHub initial code; expanded branch PR pending review
+# Final submission checklist — updated 2026-10-30 KST
+- [ ] Native Studio workflow settings JSON (actual export by account owner)
+- [ ] 20+ original test PDFs, source-verified; local draft 60 files are not present in GitHub
+- [ ] Human-reviewed gold JSON with identical keys to Studio predictions
+- [ ] Case-types table covering five official evaluation categories
+- [ ] One-page workflow design PDF
+- [ ] Actual Studio dataset execution result JSON (not Python synthetic output)
+- [ ] Recorded demo with real normal and conflict-blocked workflow
+- [ ] Presentation PDF with only measured performance numbers
+- [ ] Team Mission 2 and personal Mission 1 separately submitted in LMS
+- [ ] Final LMS upload by 2026-11-10 17:00 KST (confirm exact spec in LMS)
+- [x] Initial GitHub repository and PR #11 documentation
+- [ ] Code review + CI pass on B+C3 PR changes
+- [ ] Optional demo URL and extra GitHub code
 
-Check actual LMS formats, file count and specific times. Oct 22 updated university notice points to Nov 11 13:00 KST final submission; keep Nov 10 17:00 internal freeze. Human approval required for external communication.
+The user's account must execute and export Studio artifacts. No API keys, real company orders or personal data in commits.

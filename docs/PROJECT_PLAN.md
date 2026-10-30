@@ -1,21 +1,16 @@
-# One-week roadmap (KST)
-Internal freeze: **2026-11-10 17:00**. University updated notice: external final deadline appears **2026-11-11 13:00**; verify in LMS/OT.
-| KST dates | WBS | Dependency | Person-hours |
-|---|---|---|---:|
-| 10/29 | W01 requirements, schemas; W02 deterministic engine | none | 8 |
-| 10/30 | W03 synthetic docs and labels; W04 Studio OT and access | W01 | 8 |
-| 10/31 | W05 human source review; W06 Studio prompts | W03 W04 | 8 |
-| 11/01 | W07 one-page workflow and demo storyboard; W08 invalid data guards | W05 | 6 |
-| 11/02 | W09 training; W10 first 12 Studio docs | W04 W06 | 8 |
-| 11/03 | W11 individual Mission 1, W12 extraction error review | W10 | 5 |
-| 11/04 | W13 remaining 48 docs; W14 Studio/Python adapter | W10 W08 | 10 |
-| 11/05 | W15 quote/email draft; W16 conflict tests | W14 | 8 |
-| 11/06 | W17 team Mission 2; W18 CI and regression tests | W13 W15 | 5 |
-| 11/07-08 | W19 fix failure cases; W20 optional evidence trail | W17 | 8 |
-| 11/09 | W21 office hours, demo video, PDF slides, config export | W19 | 8 |
-| 11/10 | W22 freeze/audit, backups | W21 | 5 |
-| 11/11 | W23 final upload and confirmation | W22 | 2 |
+# Development order — official 2026-10-30 KST schedule
 
-Approximate team total: **89 person-hours**, not a guarantee. Roles: (1) lead/backend & schemas, (2) Studio prompts/workflow, (3) data/labels/evaluation, (4) demos/submission. One developer starts; up to four parallelize when available. ChatGPT can author specs, code, tests, synthetic PDFs; user/team must validate ground truth, access Studio, export actual settings, and submit LMS deliverables.
+**Final submission:** 2026-11-10 17:00 KST in the team's new official timetable. Replace previous Nov 11 assumption; recheck LMS.
 
-Dependencies: valid schemas → source labels → Studio test → output adapter → final demo/exports. If blocked by Studio access, prioritize local B calculations and dataset. If behind by Nov 6, remove C optimization/UI and complete essential documents, results, and final submission. Mission 1 Nov 3, Mission 2 Nov 6, office hours Nov 9; confirm exact mission hours and grading rules at OT.
+| Day | GitHub/ChatGPT deliverable | Human/Studio task | Acceptance |
+|---|---|---|---|
+| 10/30–31 | B+C3 deterministic engine, adapter, tests, schemas, PR review | check Large account and LMS; create Studio workflow | CI runs and one PDF uploads |
+| 11/01–02 | adjust schemas and prompts to native Studio format | run normal C001 and collect genuine prediction JSON | predicted extraction captured |
+| 11/03 | integrate actual extraction output | Mission 1 personal submission; test C013 conflict | PO mismatch blocked |
+| 11/04–05 | code bridge, metrics, C017 normalization | original PDF/gold cross-check and full run | real end-to-end case passes |
+| 11/06 | B stable, freeze mission deliverables | Mission 2 team submission | real Studio results archived |
+| 11/07–08 | C1 counterfactual, C2 evidence gate, C3 partial delivery regression fixes | retest actual Studio cases | C3 three demo tests pass |
+| 11/09 | docs, slides, eval report, demo script | capture demo; office hours; native export | complete submission bundle |
+| 11/10 | no speculative new features | final submit before 17:00 | LMS confirmation retained |
+
+Prioritize B + real Studio evidence before C extensions. Do not claim synthetic PDFs or local pytest results as an actual Studio run.
