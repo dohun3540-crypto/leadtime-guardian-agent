@@ -1,6 +1,6 @@
 """B+C3 offline regression suite. Studio accuracy must be tested separately."""
-from copy import deepcopy
 import json
+from copy import deepcopy
 from pathlib import Path
 
 import pytest
