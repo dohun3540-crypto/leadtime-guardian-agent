@@ -4,19 +4,18 @@ import hashlib
 import json
 import shutil
 import sys
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from leadtime_guardian.studio_integration import (  # noqa: E402
-    analyze_studio_documents,
-    documents_from_export,
-)
-
-
 def main():
+    from leadtime_guardian.studio_integration import (
+        analyze_studio_documents,
+        documents_from_export,
+    )
+
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--export", type=Path, required=True)
     parser.add_argument("--base", type=Path, required=True)
@@ -32,7 +31,7 @@ def main():
                         .read_text(encoding="utf-8"))
     metadata = {"run_id": args.run_id, "config_version": args.config_version,
                 "prompt_version": args.prompt_version,
-                "processed_at_utc": datetime.now(timezone.utc).isoformat(),
+                "processed_at_utc": datetime.now(UTC).isoformat(),
                 "export_sha256": hashlib.sha256(args.export.read_bytes()).hexdigest(),
                 "studio_provenance": "user-supplied export; verify against native run history",
                 "evidence_verified_against_pdf": False}

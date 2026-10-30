@@ -77,6 +77,9 @@ Human-reviewed gold and actual prediction accuracy remain pending.
   required source tokens and manifest hashes matched. This is local asset QA.
 - Offline repository sample computed 0 / 60 / 60 and KRW 60,500.00.
 - Actual Studio runs: 0. Actual Studio prediction accuracy: not measured.
+- First GitHub Python 3.11 CI attempt failed at Ruff 0.17.3 on an unused lint
+  suppression and the older `timezone.utc` spelling; pytest was skipped on that
+  attempt. Removed the suppression and adopted `datetime.UTC`; rerun is required.
 
 ## Official references checked
 
