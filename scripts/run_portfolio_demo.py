@@ -1,6 +1,7 @@
 """Offline demonstration; never label these local results as Studio predictions."""
 import json
 from pathlib import Path
+
 from leadtime_guardian.engine import analyze_portfolio
 
 if __name__ == "__main__":
