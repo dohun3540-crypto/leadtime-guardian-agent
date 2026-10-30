@@ -1,5 +1,7 @@
 # LeadTime Guardian Agent
 
+환경 이전 및 개발 재개: **[Chrome Work 인계 문서](docs/WORK_HANDOFF.md)**.
+
 **대구·울산·경북 대학 연합 X Upstage AI Agent Hackathon V.2**  
 AI Agent 기반 납기 지연 영향 분석 및 구매 대응 자동화 시스템
 
