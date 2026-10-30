@@ -1,4 +1,18 @@
-# Python 안전성 V6 체크포인트 — 2026-10-30 KST
+# 팀원 2 Studio V6 통합 점검 — 2026-10-31 KST
+
+최신 상태는 [팀원 2 검증 표](member2_v6/VALIDATION_MATRIX.md), [문제 기록](member2_v6/ISSUE_REGISTER.md), [Studio 전달 계약과 요청 목록](member2_v6/GITHUB_STUDIO_HANDOFF.md)을 우선한다.
+
+- PR #11 HEAD `f196c694…`, 기존 PR #12 점검 HEAD `31fbdd12…` 및 각각 CI success를 재조회. 원격 변경 없음.
+- 기준 소스를 격리해 80개, 현재 소스에서 189개 pytest를 새로 실행했으며 Ruff도 각각 PASS. 이번에는 계산 코드·테스트를 추가 수정하지 않음.
+- tar 목록·경로·해시를 먼저 검사하고 원본 PDF 57개를 로컬 복원. C001 포함 60개 모두 manifest 일치, PDF/라벨 재생성 없음.
+- 저장된 실제 V4 C001 Native를 다시 Python 재생해 0/60/60 EA, 60,500 KRW 확인. 25필드 원문 텍스트를 기계 대조했으나 사람 검수·Gold 승인·PDF 검증 플래그는 미완료 유지.
+- Studio V6 개선 후보의 실제 Agent/Config/저장 version·Native 설정·예측은 미제공으로 BLOCKED. 앞선 Python 작업명 V6와 Studio 버전을 구분하며 V4/V5로 대체하지 않음.
+- 추가 제공 main ZIP은 원격 main의 21개 파일과 동일하며 PDF/V6 결과가 없음. 최신 PR 자료의 대체본으로 쓰지 않음.
+- 신규 Studio Job/live API 호출/구매/메일/병합 없음. 기존 PR #12 전용 브랜치를 재사용하고 이번 문서·실측 기록을 추가함.
+
+---
+
+# Python 안전성 V6 체크포인트 — 2026-10-30 KST (이전 기록)
 
 현재 작업 인계는 [Python 개발 보고서](PYTHON_SAFETY_V6_HANDOFF.md)를 우선한다. PR #11의 최신 HEAD `f196c694917f2d9e5f4ec228c752bd3f2a4eb882`에서 `codex/teammate-python-safety-v6` 브랜치를 분리했다. 기존 브랜치를 덮어쓰지 않는다.
 

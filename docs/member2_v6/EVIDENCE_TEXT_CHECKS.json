@@ -1,0 +1,382 @@
+{
+  "date_kst": "2026-10-31",
+  "scope": "C001 saved actual V4 predictions versus source PDF text; no V6 prediction available",
+  "method": "pypdf text extraction and exact contextual excerpt comparison; not independent human label review",
+  "evidence_verified_against_pdf": false,
+  "records": [
+    {
+      "document_id": "PO-DOC",
+      "field_path": "po_id",
+      "normalized_value": "PO1",
+      "source_pdf": "data/cases/SYN-C001/SYN-C001_purchase_order.pdf",
+      "source_sha256": "9246b69363e3cec3dca7654b14bc7facdb0f762e8ae72c42594f38efabadc930",
+      "source_page": 1,
+      "source_excerpt": "PO ID / 발주번호\nPO1",
+      "check": "MACHINE_TEXT_MATCH",
+      "human_reviewed": false,
+      "evidence_verified_against_pdf": false
+    },
+    {
+      "document_id": "PO-DOC",
+      "field_path": "original_delivery",
+      "normalized_value": "2026-11-03",
+      "source_pdf": "data/cases/SYN-C001/SYN-C001_purchase_order.pdf",
+      "source_sha256": "9246b69363e3cec3dca7654b14bc7facdb0f762e8ae72c42594f38efabadc930",
+      "source_page": 1,
+      "source_excerpt": "Original delivery / 기존 입고일\n2026-11-03",
+      "check": "MACHINE_TEXT_MATCH",
+      "human_reviewed": false,
+      "evidence_verified_against_pdf": false
+    },
+    {
+      "document_id": "PO-DOC",
+      "field_path": "items[0].product_id",
+      "normalized_value": "A",
+      "source_pdf": "data/cases/SYN-C001/SYN-C001_purchase_order.pdf",
+      "source_sha256": "9246b69363e3cec3dca7654b14bc7facdb0f762e8ae72c42594f38efabadc930",
+      "source_page": 1,
+      "source_excerpt": "A\nR1\n100\nEA",
+      "check": "MACHINE_TEXT_MATCH",
+      "human_reviewed": false,
+      "evidence_verified_against_pdf": false
+    },
+    {
+      "document_id": "PO-DOC",
+      "field_path": "items[0].receipt_id",
+      "normalized_value": "R1",
+      "source_pdf": "data/cases/SYN-C001/SYN-C001_purchase_order.pdf",
+      "source_sha256": "9246b69363e3cec3dca7654b14bc7facdb0f762e8ae72c42594f38efabadc930",
+      "source_page": 1,
+      "source_excerpt": "A\nR1\n100\nEA",
+      "check": "MACHINE_TEXT_MATCH",
+      "human_reviewed": false,
+      "evidence_verified_against_pdf": false
+    },
+    {
+      "document_id": "PO-DOC",
+      "field_path": "items[0].quantity",
+      "normalized_value": 100,
+      "source_pdf": "data/cases/SYN-C001/SYN-C001_purchase_order.pdf",
+      "source_sha256": "9246b69363e3cec3dca7654b14bc7facdb0f762e8ae72c42594f38efabadc930",
+      "source_page": 1,
+      "source_excerpt": "A\nR1\n100\nEA",
+      "check": "MACHINE_TEXT_MATCH",
+      "human_reviewed": false,
+      "evidence_verified_against_pdf": false
+    },
+    {
+      "document_id": "PO-DOC",
+      "field_path": "items[0].unit",
+      "normalized_value": "EA",
+      "source_pdf": "data/cases/SYN-C001/SYN-C001_purchase_order.pdf",
+      "source_sha256": "9246b69363e3cec3dca7654b14bc7facdb0f762e8ae72c42594f38efabadc930",
+      "source_page": 1,
+      "source_excerpt": "A\nR1\n100\nEA",
+      "check": "MACHINE_TEXT_MATCH",
+      "human_reviewed": false,
+      "evidence_verified_against_pdf": false
+    },
+    {
+      "document_id": "NOTICE-DOC",
+      "field_path": "po_id",
+      "normalized_value": "PO1",
+      "source_pdf": "data/cases/SYN-C001/SYN-C001_delivery_notice.pdf",
+      "source_sha256": "7a5f7b8f025a79a0751a6b6c41e21292fc62c1c02cdd071048e38a66e4bf7f2b",
+      "source_page": 1,
+      "source_excerpt": "PO ID / 발주번호\nPO1",
+      "check": "MACHINE_TEXT_MATCH",
+      "human_reviewed": false,
+      "evidence_verified_against_pdf": false
+    },
+    {
+      "document_id": "NOTICE-DOC",
+      "field_path": "original_delivery",
+      "normalized_value": "2026-11-03",
+      "source_pdf": "data/cases/SYN-C001/SYN-C001_delivery_notice.pdf",
+      "source_sha256": "7a5f7b8f025a79a0751a6b6c41e21292fc62c1c02cdd071048e38a66e4bf7f2b",
+      "source_page": 1,
+      "source_excerpt": "Original delivery / 기존 입고일\n2026-11-03",
+      "check": "MACHINE_TEXT_MATCH",
+      "human_reviewed": false,
+      "evidence_verified_against_pdf": false
+    },
+    {
+      "document_id": "NOTICE-DOC",
+      "field_path": "revised_delivery",
+      "normalized_value": "2026-11-08",
+      "source_pdf": "data/cases/SYN-C001/SYN-C001_delivery_notice.pdf",
+      "source_sha256": "7a5f7b8f025a79a0751a6b6c41e21292fc62c1c02cdd071048e38a66e4bf7f2b",
+      "source_page": 1,
+      "source_excerpt": "Revised delivery / 변경 입고일\n2026-11-08",
+      "check": "MACHINE_TEXT_MATCH",
+      "human_reviewed": false,
+      "evidence_verified_against_pdf": false
+    },
+    {
+      "document_id": "NOTICE-DOC",
+      "field_path": "items[0].product_id",
+      "normalized_value": "A",
+      "source_pdf": "data/cases/SYN-C001/SYN-C001_delivery_notice.pdf",
+      "source_sha256": "7a5f7b8f025a79a0751a6b6c41e21292fc62c1c02cdd071048e38a66e4bf7f2b",
+      "source_page": 1,
+      "source_excerpt": "A\nR1\n100\nEA",
+      "check": "MACHINE_TEXT_MATCH",
+      "human_reviewed": false,
+      "evidence_verified_against_pdf": false
+    },
+    {
+      "document_id": "NOTICE-DOC",
+      "field_path": "items[0].receipt_id",
+      "normalized_value": "R1",
+      "source_pdf": "data/cases/SYN-C001/SYN-C001_delivery_notice.pdf",
+      "source_sha256": "7a5f7b8f025a79a0751a6b6c41e21292fc62c1c02cdd071048e38a66e4bf7f2b",
+      "source_page": 1,
+      "source_excerpt": "A\nR1\n100\nEA",
+      "check": "MACHINE_TEXT_MATCH",
+      "human_reviewed": false,
+      "evidence_verified_against_pdf": false
+    },
+    {
+      "document_id": "NOTICE-DOC",
+      "field_path": "items[0].quantity",
+      "normalized_value": 100,
+      "source_pdf": "data/cases/SYN-C001/SYN-C001_delivery_notice.pdf",
+      "source_sha256": "7a5f7b8f025a79a0751a6b6c41e21292fc62c1c02cdd071048e38a66e4bf7f2b",
+      "source_page": 1,
+      "source_excerpt": "A\nR1\n100\nEA",
+      "check": "MACHINE_TEXT_MATCH",
+      "human_reviewed": false,
+      "evidence_verified_against_pdf": false
+    },
+    {
+      "document_id": "NOTICE-DOC",
+      "field_path": "items[0].unit",
+      "normalized_value": "EA",
+      "source_pdf": "data/cases/SYN-C001/SYN-C001_delivery_notice.pdf",
+      "source_sha256": "7a5f7b8f025a79a0751a6b6c41e21292fc62c1c02cdd071048e38a66e4bf7f2b",
+      "source_page": 1,
+      "source_excerpt": "A\nR1\n100\nEA",
+      "check": "MACHINE_TEXT_MATCH",
+      "human_reviewed": false,
+      "evidence_verified_against_pdf": false
+    },
+    {
+      "document_id": "QUOTE-DOC",
+      "field_path": "po_id",
+      "normalized_value": "PO1",
+      "source_pdf": "data/cases/SYN-C001/SYN-C001_quotation.pdf",
+      "source_sha256": "35c9deddbc06d0cb49c1e45cd859a95b97e2a9cde2ea5931d1f8ffe6dfc3c551",
+      "source_page": 1,
+      "source_excerpt": "Related PO / 참조 발주번호\nPO1",
+      "check": "MACHINE_TEXT_MATCH",
+      "human_reviewed": false,
+      "evidence_verified_against_pdf": false
+    },
+    {
+      "document_id": "QUOTE-DOC",
+      "field_path": "items[0].product_id",
+      "normalized_value": "A",
+      "source_pdf": "data/cases/SYN-C001/SYN-C001_quotation.pdf",
+      "source_sha256": "35c9deddbc06d0cb49c1e45cd859a95b97e2a9cde2ea5931d1f8ffe6dfc3c551",
+      "source_page": 1,
+      "source_excerpt": "A\n60\nEA",
+      "check": "MACHINE_TEXT_MATCH",
+      "human_reviewed": false,
+      "evidence_verified_against_pdf": false
+    },
+    {
+      "document_id": "QUOTE-DOC",
+      "field_path": "items[0].quantity",
+      "normalized_value": 60,
+      "source_pdf": "data/cases/SYN-C001/SYN-C001_quotation.pdf",
+      "source_sha256": "35c9deddbc06d0cb49c1e45cd859a95b97e2a9cde2ea5931d1f8ffe6dfc3c551",
+      "source_page": 1,
+      "source_excerpt": "A\n60\nEA",
+      "check": "MACHINE_TEXT_MATCH",
+      "human_reviewed": false,
+      "evidence_verified_against_pdf": false
+    },
+    {
+      "document_id": "QUOTE-DOC",
+      "field_path": "items[0].unit",
+      "normalized_value": "EA",
+      "source_pdf": "data/cases/SYN-C001/SYN-C001_quotation.pdf",
+      "source_sha256": "35c9deddbc06d0cb49c1e45cd859a95b97e2a9cde2ea5931d1f8ffe6dfc3c551",
+      "source_page": 1,
+      "source_excerpt": "A\n60\nEA",
+      "check": "MACHINE_TEXT_MATCH",
+      "human_reviewed": false,
+      "evidence_verified_against_pdf": false
+    },
+    {
+      "document_id": "QUOTE-DOC",
+      "field_path": "quote.quote_id",
+      "normalized_value": "Q1",
+      "source_pdf": "data/cases/SYN-C001/SYN-C001_quotation.pdf",
+      "source_sha256": "35c9deddbc06d0cb49c1e45cd859a95b97e2a9cde2ea5931d1f8ffe6dfc3c551",
+      "source_page": 1,
+      "source_excerpt": "Quote ID / 견적번호\nQ1",
+      "check": "MACHINE_TEXT_MATCH",
+      "human_reviewed": false,
+      "evidence_verified_against_pdf": false
+    },
+    {
+      "document_id": "QUOTE-DOC",
+      "field_path": "quote.supplier_id",
+      "normalized_value": "S1",
+      "source_pdf": "data/cases/SYN-C001/SYN-C001_quotation.pdf",
+      "source_sha256": "35c9deddbc06d0cb49c1e45cd859a95b97e2a9cde2ea5931d1f8ffe6dfc3c551",
+      "source_page": 1,
+      "source_excerpt": "Supplier ID / 대체 공급업체\nS1",
+      "check": "MACHINE_TEXT_MATCH",
+      "human_reviewed": false,
+      "evidence_verified_against_pdf": false
+    },
+    {
+      "document_id": "QUOTE-DOC",
+      "field_path": "quote.arrival_date",
+      "normalized_value": "2026-11-04",
+      "source_pdf": "data/cases/SYN-C001/SYN-C001_quotation.pdf",
+      "source_sha256": "35c9deddbc06d0cb49c1e45cd859a95b97e2a9cde2ea5931d1f8ffe6dfc3c551",
+      "source_page": 1,
+      "source_excerpt": "Arrival date / 대체 입고일\n2026-11-04",
+      "check": "MACHINE_TEXT_MATCH",
+      "human_reviewed": false,
+      "evidence_verified_against_pdf": false
+    },
+    {
+      "document_id": "QUOTE-DOC",
+      "field_path": "quote.unit_price",
+      "normalized_value": "1000.00",
+      "source_pdf": "data/cases/SYN-C001/SYN-C001_quotation.pdf",
+      "source_sha256": "35c9deddbc06d0cb49c1e45cd859a95b97e2a9cde2ea5931d1f8ffe6dfc3c551",
+      "source_page": 1,
+      "source_excerpt": "Unit price / 단가\n1000.00 KRW / EA",
+      "check": "MACHINE_TEXT_MATCH",
+      "human_reviewed": false,
+      "evidence_verified_against_pdf": false
+    },
+    {
+      "document_id": "QUOTE-DOC",
+      "field_path": "quote.shipping_cost",
+      "normalized_value": "500",
+      "source_pdf": "data/cases/SYN-C001/SYN-C001_quotation.pdf",
+      "source_sha256": "35c9deddbc06d0cb49c1e45cd859a95b97e2a9cde2ea5931d1f8ffe6dfc3c551",
+      "source_page": 1,
+      "source_excerpt": "Shipping cost / 운송비\n500 KRW (once per quote)",
+      "check": "MACHINE_TEXT_MATCH",
+      "human_reviewed": false,
+      "evidence_verified_against_pdf": false
+    },
+    {
+      "document_id": "QUOTE-DOC",
+      "field_path": "quote.currency",
+      "normalized_value": "KRW",
+      "source_pdf": "data/cases/SYN-C001/SYN-C001_quotation.pdf",
+      "source_sha256": "35c9deddbc06d0cb49c1e45cd859a95b97e2a9cde2ea5931d1f8ffe6dfc3c551",
+      "source_page": 1,
+      "source_excerpt": "Currency / 통화\nKRW",
+      "check": "MACHINE_TEXT_MATCH",
+      "human_reviewed": false,
+      "evidence_verified_against_pdf": false
+    },
+    {
+      "document_id": "QUOTE-DOC",
+      "field_path": "quote.product_id",
+      "normalized_value": "A",
+      "source_pdf": "data/cases/SYN-C001/SYN-C001_quotation.pdf",
+      "source_sha256": "35c9deddbc06d0cb49c1e45cd859a95b97e2a9cde2ea5931d1f8ffe6dfc3c551",
+      "source_page": 1,
+      "source_excerpt": "A\n60\nEA",
+      "check": "MACHINE_TEXT_MATCH",
+      "human_reviewed": false,
+      "evidence_verified_against_pdf": false
+    },
+    {
+      "document_id": "QUOTE-DOC",
+      "field_path": "quote.capacity",
+      "normalized_value": 60,
+      "source_pdf": "data/cases/SYN-C001/SYN-C001_quotation.pdf",
+      "source_sha256": "35c9deddbc06d0cb49c1e45cd859a95b97e2a9cde2ea5931d1f8ffe6dfc3c551",
+      "source_page": 1,
+      "source_excerpt": "A\n60\nEA",
+      "check": "MACHINE_TEXT_MATCH",
+      "human_reviewed": false,
+      "evidence_verified_against_pdf": false
+    }
+  ],
+  "priority_source_pdfs": [
+    {
+      "path": "data/cases/SYN-C001/SYN-C001_delivery_notice.pdf",
+      "sha256": "7a5f7b8f025a79a0751a6b6c41e21292fc62c1c02cdd071048e38a66e4bf7f2b",
+      "pages": 1,
+      "text": "LEADTIME GUARDIAN | SYNTHETIC TEST DOCUMENT\nDELIVERY NOTICE / 납기 변경 통보서\nCase ID / 케이스\nSYN-C001\nDocument ID / 문서 ID\nNOTICE-DOC\nPO ID / 발주번호\nPO1\nOriginal delivery / 기존 입고일\n2026-11-03\nRevised delivery / 변경 입고일\n2026-11-08\nProduct / 품목\nReceipt / 입고 건\nAffected quantity / 수량\nUnit / 단위\nA\nR1\n100\nEA\nOnly the delivery date changes; the quantity remains unchanged. / 수량 변경 없이 납기만 변경합니다.\nSYNTHETIC / 합성 자료: fictional procurement test data. Inventory and customer orders are separate trusted JSON inputs.\n"
+    },
+    {
+      "path": "data/cases/SYN-C001/SYN-C001_purchase_order.pdf",
+      "sha256": "9246b69363e3cec3dca7654b14bc7facdb0f762e8ae72c42594f38efabadc930",
+      "pages": 1,
+      "text": "LEADTIME GUARDIAN | SYNTHETIC TEST DOCUMENT\nPURCHASE ORDER / 발주서\nCase ID / 케이스\nSYN-C001\nDocument ID / 문서 ID\nPO-DOC\nPO ID / 발주번호\nPO1\nOriginal delivery / 기존 입고일\n2026-11-03\nProduct / 품목\nReceipt / 입고 건\nQuantity / 수량\nUnit / 단위\nA\nR1\n100\nEA\nThis purchase order records the original inbound schedule. / 기존 입고 일정입니다.\nSYNTHETIC / 합성 자료: fictional procurement test data. Inventory and customer orders are separate trusted JSON inputs.\n"
+    },
+    {
+      "path": "data/cases/SYN-C001/SYN-C001_quotation.pdf",
+      "sha256": "35c9deddbc06d0cb49c1e45cd859a95b97e2a9cde2ea5931d1f8ffe6dfc3c551",
+      "pages": 1,
+      "text": "LEADTIME GUARDIAN | SYNTHETIC TEST DOCUMENT\nSUPPLIER QUOTE / 대체 공급업체 견적서\nCase ID / 케이스\nSYN-C001\nDocument ID / 문서 ID\nQUOTE-DOC\nQuote ID / 견적번호\nQ1\nSupplier ID / 대체 공급업체\nS1\nRelated PO / 참조 발주번호\nPO1\nArrival date / 대체 입고일\n2026-11-04\nUnit price / 단가\n1000.00 KRW / EA\nShipping cost / 운송비\n500 KRW (once per quote)\nCurrency / 통화\nKRW\nProduct / 품목\nCapacity / 공급 가능 수량\nUnit / 단위\nA\n60\nEA\nReplacement offer only. No purchase has been placed. / 대체 구매 검토용 견적이며 발주가 아닙니다.\nSYNTHETIC / 합성 자료: fictional procurement test data. Inventory and customer orders are separate trusted JSON inputs.\n"
+    },
+    {
+      "path": "data/cases/SYN-C008/SYN-C008_delivery_notice.pdf",
+      "sha256": "ec6f04c0ad45889f3987347cfb89b64d52b50a82f9531f03916f9f30ea40ad61",
+      "pages": 1,
+      "text": "LEADTIME GUARDIAN | SYNTHETIC TEST DOCUMENT | DRAFT\nDELIVERY NOTICE / 납기 변경 통보서\nCase ID\nSYN-C008\nDocument ID\nC008-NOTICE\nPO ID\nPO1\nOriginal delivery\n2026-11-03\nRevised delivery\n2026-11-08\nProduct\nReceipt\nQuantity\nUnit\nA\nR2\n60\nEA\nOnly the listed receipts are affected; all other receipts retain their original dates.\nSYNTHETIC / 합성 자료. Fictional procurement test data. Inventory and customer orders are separate trusted JSON inputs. Human\nlabel review pending.\n"
+    },
+    {
+      "path": "data/cases/SYN-C008/SYN-C008_purchase_order.pdf",
+      "sha256": "dd8e8b66ca5146c8a7098cd530f3d95ca68e0ff9e32dc96f0e5e7ad7e24addaa",
+      "pages": 1,
+      "text": "LEADTIME GUARDIAN | SYNTHETIC TEST DOCUMENT | DRAFT\nPURCHASE ORDER / 발주서\nCase ID\nSYN-C008\nDocument ID\nC008-PO\nPO ID\nPO1\nOriginal delivery\n2026-11-03\nProduct\nReceipt\nQuantity\nUnit\nA\nR1\n40\nEA\nA\nR2\n60\nEA\nOriginal inbound schedule.\nSYNTHETIC / 합성 자료. Fictional procurement test data. Inventory and customer orders are separate trusted JSON inputs. Human\nlabel review pending.\n"
+    },
+    {
+      "path": "data/cases/SYN-C008/SYN-C008_quotation.pdf",
+      "sha256": "7b93b501dd48c77b1c981272666d1956a0fe1cda5cb7c2ba9c11992d72b59d92",
+      "pages": 1,
+      "text": "LEADTIME GUARDIAN | SYNTHETIC TEST DOCUMENT | DRAFT\nSUPPLIER QUOTE / 대체 공급업체 견적서\nCase ID\nSYN-C008\nDocument ID\nC008-QUOTE\nRelated PO\nPO1\nQuote ID\nQ008\nSupplier ID\nS1\nArrival date\n2026-11-04\nUnit price\n1000.00 KRW / EA\nShipping cost\n500 KRW (once per quote)\nCurrency\nKRW\nProduct\nCapacity\nUnit\nA\n60\nEA\nReplacement offer only. No purchase has been placed.\nSYNTHETIC / 합성 자료. Fictional procurement test data. Inventory and customer orders are separate trusted JSON inputs. Human\nlabel review pending.\n"
+    },
+    {
+      "path": "data/cases/SYN-C013/SYN-C013_delivery_notice.pdf",
+      "sha256": "f4d7446b540c7dd2a50cf566ba47982cc4fcc8ce1230743d8175239eac9d2bfb",
+      "pages": 1,
+      "text": "LEADTIME GUARDIAN | SYNTHETIC TEST DOCUMENT | DRAFT\nDELIVERY NOTICE / 납기 변경 통보서\nCase ID\nSYN-C013\nDocument ID\nC013-NOTICE\nPO ID\nPO999\nOriginal delivery\n2026-11-03\nRevised delivery\n2026-11-08\nProduct\nReceipt\nQuantity\nUnit\nA\nR1\n100\nEA\nOnly the listed receipts are affected; all other receipts retain their original dates.\nSYNTHETIC / 합성 자료. Fictional procurement test data. Inventory and customer orders are separate trusted JSON inputs. Human\nlabel review pending.\n"
+    },
+    {
+      "path": "data/cases/SYN-C013/SYN-C013_purchase_order.pdf",
+      "sha256": "8616adc32f2a12495586c674020011174d2c97812b3bced9638bc91f221ee2d9",
+      "pages": 1,
+      "text": "LEADTIME GUARDIAN | SYNTHETIC TEST DOCUMENT | DRAFT\nPURCHASE ORDER / 발주서\nCase ID\nSYN-C013\nDocument ID\nC013-PO\nPO ID\nPO1\nOriginal delivery\n2026-11-03\nProduct\nReceipt\nQuantity\nUnit\nA\nR1\n100\nEA\nOriginal inbound schedule.\nSYNTHETIC / 합성 자료. Fictional procurement test data. Inventory and customer orders are separate trusted JSON inputs. Human\nlabel review pending.\n"
+    },
+    {
+      "path": "data/cases/SYN-C013/SYN-C013_quotation.pdf",
+      "sha256": "590a11d68814d8e35ba1dee1734a71791b703b464dd87f3661fab8ea5bdbd735",
+      "pages": 1,
+      "text": "LEADTIME GUARDIAN | SYNTHETIC TEST DOCUMENT | DRAFT\nSUPPLIER QUOTE / 대체 공급업체 견적서\nCase ID\nSYN-C013\nDocument ID\nC013-QUOTE\nRelated PO\nPO1\nQuote ID\nQ013\nSupplier ID\nS1\nArrival date\n2026-11-04\nUnit price\n1000.00 KRW / EA\nShipping cost\n500 KRW (once per quote)\nCurrency\nKRW\nProduct\nCapacity\nUnit\nA\n60\nEA\nReplacement offer only. No purchase has been placed.\nSYNTHETIC / 합성 자료. Fictional procurement test data. Inventory and customer orders are separate trusted JSON inputs. Human\nlabel review pending.\n"
+    },
+    {
+      "path": "data/cases/SYN-C017/SYN-C017_delivery_notice.pdf",
+      "sha256": "17f06614b3fcc1a0e33eb6d48199768d8a02a32b48bff0b91cabdecd2a993e2e",
+      "pages": 1,
+      "text": "LEADTIME GUARDIAN | SYNTHETIC TEST DOCUMENT | DRAFT\nDELIVERY NOTICE / 납기 변경 통보서\nCase ID\nSYN-C017\nDocument ID\nC017-NOTICE\nPO ID\nPO1\nOriginal delivery\n2026년 11월 3일\nRevised delivery\n2026년 11월 8일\nProduct\nReceipt\nQuantity\nUnit\nA\nR1\n100\nEA\nOnly the listed receipts are affected; all other receipts retain their original dates.\nSYNTHETIC / 합성 자료. Fictional procurement test data. Inventory and customer orders are separate trusted JSON inputs. Human\nlabel review pending.\n"
+    },
+    {
+      "path": "data/cases/SYN-C017/SYN-C017_purchase_order.pdf",
+      "sha256": "22d5f85e9bfe46d759ff57c079e02db11ca949e81de02119d88eb4add6ac6ab6",
+      "pages": 1,
+      "text": "LEADTIME GUARDIAN | SYNTHETIC TEST DOCUMENT | DRAFT\nPURCHASE ORDER / 발주서\nCase ID\nSYN-C017\nDocument ID\nC017-PO\nPO ID\nPO1\nOriginal delivery\n2026년 11월 3일\nProduct\nReceipt\nQuantity\nUnit\nA\nR1\n100\nEA\nOriginal inbound schedule.\nSYNTHETIC / 합성 자료. Fictional procurement test data. Inventory and customer orders are separate trusted JSON inputs. Human\nlabel review pending.\n"
+    },
+    {
+      "path": "data/cases/SYN-C017/SYN-C017_quotation.pdf",
+      "sha256": "aad4125f7501653211fcd764c163930f74a3c031b5681d0bdee01c9fbd8b654c",
+      "pages": 1,
+      "text": "LEADTIME GUARDIAN | SYNTHETIC TEST DOCUMENT | DRAFT\nSUPPLIER QUOTE / 대체 공급업체 견적서\nCase ID\nSYN-C017\nDocument ID\nC017-QUOTE\nRelated PO\nPO1\nQuote ID\nQ017\nSupplier ID\nS1\nArrival date\n2026년 11월 4일\nUnit price\n1000.00 KRW / EA\nShipping cost\n500 KRW (once per quote)\nCurrency\nKRW\nProduct\nCapacity\nUnit\nA\n60\nEA\nReplacement offer only. No purchase has been placed.\nSYNTHETIC / 합성 자료. Fictional procurement test data. Inventory and customer orders are separate trusted JSON inputs. Human\nlabel review pending.\n"
+    }
+  ]
+}

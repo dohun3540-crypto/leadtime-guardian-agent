@@ -1,0 +1,117 @@
+{
+  "status": "PASS",
+  "date_kst": "2026-10-31",
+  "zip_sha256": "8ad48f0e4ccdb91ff4c8b2fbc6e769a74bf287b463bfbc4feee53357225ef963",
+  "main_commit": "e36250074eed33db7951c4d58d8678e07b333a58",
+  "files": 21,
+  "pdf_files": 0,
+  "v6_native_exports": 0,
+  "v6_predictions": 0,
+  "records": [
+    {
+      "path": ".editorconfig",
+      "sha256": "c2634dd31c455bf74639a03d6311cd4955097d75a6e3163d600b16d767f0db2e",
+      "matches_remote_main_blob": true
+    },
+    {
+      "path": ".env.example",
+      "sha256": "a321a15e72d346a6554ac053cc2d019d4e27732972391e1c9ba6394da0093f19",
+      "matches_remote_main_blob": true
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/feature_request.md",
+      "sha256": "7b548bbfb5508ca4bd2ae4eb03d447a592f435c8cae0174f495a5e88776ffc40",
+      "matches_remote_main_blob": true
+    },
+    {
+      "path": ".github/pull_request_template.md",
+      "sha256": "7d914777b96c52a13417cb680c1415f4a1e98a9636d36270060df9e6bcfe908e",
+      "matches_remote_main_blob": true
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "sha256": "247c0919d6b74ad41540ad43a84f1da2f9bf78f3c3adacf1a6dd6c57cfdbf170",
+      "matches_remote_main_blob": true
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "7dadb6a905ec5016c79777956d6411c4b5b8e863f1ffb071054c1fbee7499e95",
+      "matches_remote_main_blob": true
+    },
+    {
+      "path": "README.md",
+      "sha256": "df373dfe0b720dec5ffc105abd858af81bdb2c9e325db18a95d13487ee8b4cbc",
+      "matches_remote_main_blob": true
+    },
+    {
+      "path": "configs/schemas/analysis_output.schema.json",
+      "sha256": "5ae705a6d50e3f43bd3857de692cff27a5a835331d260b45c048822249320a0e",
+      "matches_remote_main_blob": true
+    },
+    {
+      "path": "configs/schemas/document_extraction.schema.json",
+      "sha256": "9fcde44510add5938d01af8dbf2895e9880cdd272dfb0251e496eaf957a5df87",
+      "matches_remote_main_blob": true
+    },
+    {
+      "path": "data/sample/demo_case.json",
+      "sha256": "f3b502b89a5ccb91738bb8f9f590857887c5cb8de4e47d7892fec66410b080be",
+      "matches_remote_main_blob": true
+    },
+    {
+      "path": "docs/ARCHITECTURE.md",
+      "sha256": "edf3e5b2adb031a0a5f720e399e53a03a4742168a8ce991042b82465e15dd382",
+      "matches_remote_main_blob": true
+    },
+    {
+      "path": "docs/DATA_GUIDE.md",
+      "sha256": "7a026a06be97cda9c997d7b6a2530387211580c08b2326f8522b077cc3a1bb68",
+      "matches_remote_main_blob": true
+    },
+    {
+      "path": "docs/PROJECT_PLAN.md",
+      "sha256": "486171728504edeb60bcb014d5fdc0e59e79aacd66b383bb77ee7c0038dc38a1",
+      "matches_remote_main_blob": true
+    },
+    {
+      "path": "docs/STUDIO_INTEGRATION.md",
+      "sha256": "dd28e5a0603d0938dcf25ad248e960590a3405380d96749dc20d6077969a5598",
+      "matches_remote_main_blob": true
+    },
+    {
+      "path": "docs/TEAM_RULES.md",
+      "sha256": "c63404f9092d31fe347351924e0b2eec7965fa1c2546b80ca5ce61a9bb231509",
+      "matches_remote_main_blob": true
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "3a61439773fd881a2979d1c7f0be58afee5fc2e281c3aff7fc8e8d1b34043291",
+      "matches_remote_main_blob": true
+    },
+    {
+      "path": "requirements-dev.txt",
+      "sha256": "887953c26fe4fee1f90f716d27edc2be812581c679517144900d408f30860f24",
+      "matches_remote_main_blob": true
+    },
+    {
+      "path": "scripts/run_demo.py",
+      "sha256": "0f396b32186e2bedbd4bc1f16cf2fddc6a36040d692d4dbd650feef6cad5983d",
+      "matches_remote_main_blob": true
+    },
+    {
+      "path": "src/leadtime_guardian/__init__.py",
+      "sha256": "d683c251a4c0e43b1df17374decece075c7a66395947eed331fd091ab2531ebf",
+      "matches_remote_main_blob": true
+    },
+    {
+      "path": "src/leadtime_guardian/analysis.py",
+      "sha256": "adecbeae5337e4a035f9dd065dad28e297936bfe04fed06bf6b06be019ba2ed0",
+      "matches_remote_main_blob": true
+    },
+    {
+      "path": "tests/test_analysis.py",
+      "sha256": "0dafee586fcecb152d172d9b9108358f5989cbb39bad849daefead8cc4229c4f",
+      "matches_remote_main_blob": true
+    }
+  ]
+}
