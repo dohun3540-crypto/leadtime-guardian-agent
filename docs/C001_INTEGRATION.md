@@ -2,6 +2,12 @@
 
 ## Observed state
 
+Latest attempt: the user supplied the workflow's direct URL; the connected in-app
+browser returned Studio's `Error code: 404`. The optional API transport is now
+implemented with fake-client tests; see [Agents runner](AGENTS_API_RUNNER.md).
+The environment has no API key or optional SDK, so actual Studio/API executions
+remain 0. Earlier observations below are retained as history.
+
 - Source: PR #11, commit `540f9f3b40269b3e668fe95cfee4ee09f30221c2`.
 - The existing engine and adapter are reused unchanged.
 - Chrome exposes a native Studio window, but there is no connected Chrome tab provider.
@@ -44,7 +50,8 @@ The runner creates a new output directory, archives the source bytes and SHA-256
 and records the run ID and configuration/prompt versions. It supports the official
 Agents API's single-final-message `output_text` envelope as a **contract test**.
 Native UI node exports may have another format; unsupported or ambiguous formats
-are rejected until an actual export is inspected. No live API transport is claimed.
+are rejected until an actual export is inspected. API transport is implemented
+separately, but no successful live execution is claimed.
 The runner cannot authenticate the provenance of an arbitrary local JSON file.
 
 The boundary blocks schema errors, PO/product mismatch, unresolvable receipts,

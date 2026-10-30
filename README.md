@@ -62,6 +62,8 @@ ruff check .
 ## Studio 주의
 
 C001 문서와 연결 검증: [C001 integration checkpoint](docs/C001_INTEGRATION.md).
+공식 API 실행 프로그램과 사전 점검: [Agents API runner](docs/AGENTS_API_RUNNER.md).
+선택 설치는 `pip install -r requirements-agents.txt`이며, API 키는 로컬 환경변수로만 관리한다.
 `python scripts/generate_c001.py`로 3개 합성 PDF를 생성하고,
 `python scripts/analyze_studio_export.py --help`로 실제 출력 파일 연결 방법을 확인한다.
 정답 후보·오프라인 계산과 실제 Studio 출력은 별도로 보관한다. 현재 이 연결 코드의
