@@ -1,5 +1,6 @@
 """Deterministic B+C3 lead-time engine. No live ordering, email, or AI arithmetic."""
 from __future__ import annotations
+
 from collections import defaultdict
 from copy import deepcopy
 from datetime import date
@@ -11,7 +12,7 @@ KINDS = {"purchase_order", "delivery_notice", "quotation", "other"}
 
 def date_value(value, name):
     if not isinstance(value, str):
-        raise ValueError(f"{name}: expected ISO YYYY-MM-DD")
+        raise TypeError(f"{name}: expected ISO YYYY-MM-DD")
     try:
         parsed = date.fromisoformat(value)
     except ValueError as exc:
@@ -38,7 +39,7 @@ def quantity(row, name):
 def money(row, name):
     value = row.get(name)
     if isinstance(value, bool) or not isinstance(value, (int, str)):
-        raise ValueError(f"{name}: decimal string or integer required")
+        raise TypeError(f"{name}: decimal string or integer required")
     try:
         amount = Decimal(str(value))
     except InvalidOperation as exc:
@@ -240,7 +241,7 @@ def analyze_portfolio(payload):
     }
     try:
         if not isinstance(payload, dict):
-            raise ValueError("payload must be object")
+            raise TypeError("payload must be object")
         result["case_id"] = payload.get("case_id", "UNKNOWN")
         inventory, orders, inbound, quotes, docs = prepare(deepcopy(payload))
         flags = evidence_flags(inbound, docs)
