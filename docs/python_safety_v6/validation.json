@@ -1,0 +1,86 @@
+{
+  "date_kst": "2026-10-30",
+  "baseline_commit": "f196c694917f2d9e5f4ec228c752bd3f2a4eb882",
+  "branch": "codex/teammate-python-safety-v6",
+  "python": "3.11.9",
+  "package_versions": {
+    "pytest": "9.2.0",
+    "ruff": "0.17.3",
+    "jsonschema": "4.26.0",
+    "openai": "2.54.0",
+    "httpx": "0.28.1"
+  },
+  "baseline": {
+    "pytest": {
+      "status": "PASS",
+      "passed": 80,
+      "failed": 0,
+      "seconds": 17.76
+    },
+    "ruff": "PASS",
+    "ci_run": 41037193907,
+    "ci": "PASS"
+  },
+  "local_final": {
+    "pytest": {
+      "status": "PASS",
+      "passed": 189,
+      "failed": 0,
+      "log": "pytest.txt",
+      "seconds": 19.06
+    },
+    "ruff": {
+      "status": "PASS",
+      "log": "ruff.txt"
+    },
+    "new_tests": 109
+  },
+  "c001_actual_v4_replay": {
+    "status": "PASS",
+    "new_studio_execution": false,
+    "job_id": "job_gPmEYKzuJdBA6BmKhVnujs",
+    "baseline": 0,
+    "changed": 60,
+    "additional": 60,
+    "cost_krw": "60500.00",
+    "export_sha256": "88387f8d6aee1421c9f628304c6b91811396b32da297d41b40e3d53c3d98dfea"
+  },
+  "c013_actual_v5": {
+    "status": "BLOCKED",
+    "reason": "Actual Native prediction unavailable; supplied file is configuration only",
+    "expected_job_id_from_request_not_observed": "job_GvFUbjuLiPjNdBySNdH4kV"
+  },
+  "synthetic_draft_c002_c020": {
+    "status": "PASS",
+    "cases": 19,
+    "calculated": 13,
+    "safely_blocked": 6,
+    "actual_studio_predictions": false
+  },
+  "c008": {
+    "normalized_synthetic_contract": "PASS",
+    "actual_studio_extraction": "NOT_RUN"
+  },
+  "c017": {
+    "iso_normalized_synthetic_contract": "PASS",
+    "korean_pdf_extraction": "NOT_RUN",
+    "python_implicit_date_correction": false
+  },
+  "agents_api_live": {
+    "status": "NOT_RUN",
+    "requests": 0,
+    "api_key_available": false
+  },
+  "new_studio_runs": 0,
+  "sdk_http_mock_tests": 13,
+  "fake_client_tests": 18,
+  "evidence_verified_against_pdf": false,
+  "external_procurement_actions": 0,
+  "source_bytes_preserved": true,
+  "windows_checkout_byte_preservation": {
+    "status": "PASS",
+    "git_attributes": "-text",
+    "original_sha256_regression": true
+  },
+  "new_branch_ci_at_recording": "NOT_RUN; inspect the current PR commit checks separately"
+}

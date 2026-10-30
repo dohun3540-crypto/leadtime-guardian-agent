@@ -1,4 +1,17 @@
-# Chrome Work checkpoint - 2026-10-30 KST (latest, supersedes historical status below)
+# Python 안전성 V6 체크포인트 — 2026-10-30 KST
+
+현재 작업 인계는 [Python 개발 보고서](PYTHON_SAFETY_V6_HANDOFF.md)를 우선한다. PR #11의 최신 HEAD `f196c694917f2d9e5f4ec228c752bd3f2a4eb882`에서 `codex/teammate-python-safety-v6` 브랜치를 분리했다. 기존 브랜치를 덮어쓰지 않는다.
+
+- 기존 pytest 80개/Ruff 재현 후 안전성 회귀를 보강해 189개/Ruff 통과.
+- 기존 실제 C001 v4 예측으로 0/60/60 EA, 60,500 KRW 재현. 새 Studio 실행은 아니다.
+- C013 실제 v5 Native 예측은 원격 두 브랜치에 없고 사용자에게도 없음. 실제 충돌 검증은 BLOCKED, 합성 충돌 차단만 PASS.
+- 사용자 제공 파일은 설정 v5이며 원본을 `configs/studio_native/config_v5.user-supplied.export.json`에 보존했다. 실행 결과로 사용하지 않는다.
+- C008 receipt_id 기반 부분 입고와 C017 ISO 입력은 합성 테스트 PASS. 실제 PDF 추출과 Evidence 검수는 NOT_RUN.
+- 라이브 Agents API 호출 0건, 실제 구매·메일 전송·병합 없음. 문서 스키마 유지, `studio-provenance/1` sidecar 추가.
+
+---
+
+# Chrome Work checkpoint - 2026-10-30 KST (이하 이전 기록)
 
 **User requested a preservation checkpoint due to remaining usage. Stop expanding features.**
 

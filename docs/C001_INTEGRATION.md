@@ -1,5 +1,9 @@
 # C001 integration checkpoint - 2026-10-30 KST
 
+최신 검증: 저장소의 실제 Studio v4 Native 예측을 안전성 V6 Python 경계에서 재분석해 `OK`, 부족량 0/60/60 EA, 비용 60,500.00 KRW를 재현했다. 원본·PDF는 수정하지 않았다. 산출물은 `data/results/python_safety_v6/C001_v4_replay/`, 상세 계약과 미완료 항목은 [V6 인계](PYTHON_SAFETY_V6_HANDOFF.md)를 따른다. 아래 관찰은 이전 이력이며 0회 실행 기록은 현황이 아니다.
+
+---
+
 ## Observed state
 
 Latest attempt: the user supplied the workflow's direct URL; the connected in-app
