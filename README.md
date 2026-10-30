@@ -60,6 +60,12 @@ ruff check .
 - 11/12 본선 발표, 11/13 최종 데모데이. 세부 미션/업로드 규격은 운영진 교육에서 확정.
 
 ## Studio 주의
+
+C001 문서와 연결 검증: [C001 integration checkpoint](docs/C001_INTEGRATION.md).
+`python scripts/generate_c001.py`로 3개 합성 PDF를 생성하고,
+`python scripts/analyze_studio_export.py --help`로 실제 출력 파일 연결 방법을 확인한다.
+정답 후보·오프라인 계산과 실제 Studio 출력은 별도로 보관한다. 현재 이 연결 코드의
+로컬 계약 테스트는 실제 Studio 실행이나 PDF 근거 검증을 의미하지 않는다.
 공식 Studio는 Parse·Classify·Extract·Instruct·Validate·Merge·Match를 안내하며, 설정 JSON은 Studio export 기능으로 내보내야 한다. 이 프로젝트가 작성한 `configs/schemas`를 설정 export 파일로 제출하면 안 된다. Upstage 문서상 **Solar Pro 3는 2026-10-30 KST 완전 지원 종료 예정**, 새 모델은 Solar Pro 4 등 지원 대상 사용.
 
 ## 외부 참고 (2026-10-29 확인)
