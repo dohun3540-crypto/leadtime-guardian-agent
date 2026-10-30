@@ -45,13 +45,14 @@ def main():
         return 2
     if args.output is None:
         parser.error("--output is required for a live run")
-    from openai import OpenAI
+    from openai import APIError, OpenAI
 
     client = OpenAI(api_key=os.environ["UPSTAGE_API_KEY"], base_url=BASE_URL,
                     timeout=30, max_retries=0)
     meta = run_agent(client, args.pdf, args.agent_id, args.output, case_id=args.case_id,
                      config_version=args.config_version, prompt_version=args.prompt_version,
-                     execution_mode="live_agents_api", timeout_seconds=args.timeout_seconds)
+                     execution_mode="live_agents_api", timeout_seconds=args.timeout_seconds,
+                     transport_errors=(APIError,))
     print(json.dumps(meta, ensure_ascii=False, indent=2))
     return 0 if meta["status"] == "COMPLETED" else 2
 

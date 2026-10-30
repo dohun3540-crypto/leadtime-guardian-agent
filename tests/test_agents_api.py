@@ -93,7 +93,7 @@ def test_three_source_pdfs_are_one_job_with_archived_history(tmp_path):
 
 
 def test_upload_failure_cannot_submit_job_or_leak_exception_text(tmp_path):
-    client = FakeClient(upload_error=RuntimeError("FAKE-SECRET-MUST-NOT-BE-SAVED"))
+    client = FakeClient(upload_error=ConnectionError("FAKE-SECRET-MUST-NOT-BE-SAVED"))
     meta = execute(client, tmp_path / "run")
     assert meta["status"] == "NEEDS_REVIEW"
     assert not client.submissions

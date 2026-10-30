@@ -41,13 +41,13 @@ def write_json(path, value):
 def snapshot(response):
     value = response.model_dump(mode="json")
     if not isinstance(value, dict):
-        raise ValueError("API response is not an object")
+        raise TypeError("API response is not an object")
     return value
 
 
 def run_agent(client, paths, agent_id, destination, *, case_id, config_version,
               prompt_version, execution_mode="contract_test", timeout_seconds=180,
-              poll_seconds=2, clock=time.monotonic, sleep=time.sleep):
+              poll_seconds=2, clock=time.monotonic, sleep=time.sleep, transport_errors=()):
     """Upload all PDFs as one job, archive snapshots, and stop safely on errors.
 
     No automatic POST retry or fixture fallback. The CLI constructs the live SDK
@@ -59,6 +59,7 @@ def run_agent(client, paths, agent_id, destination, *, case_id, config_version,
             or not math.isfinite(poll_seconds) or not 0 < poll_seconds <= 60):
         raise ValueError("invalid timeout or polling interval")
     files = inspect_pdfs(paths, agent_id)
+    handled_errors = (OSError, ValueError, TypeError) + transport_errors
     destination = Path(destination)
     destination.mkdir(parents=True, exist_ok=False)
     (destination / "inputs").mkdir()
@@ -118,7 +119,7 @@ def run_agent(client, paths, agent_id, destination, *, case_id, config_version,
         all_steps = snapshot(client.responses.retrieve(meta["job_id"], include=["all"]))
         write_json(destination / "studio_all_steps.json", all_steps)
         meta["status"] = "COMPLETED"
-    except Exception as exc:
+    except handled_errors as exc:
         # SDK exception strings can contain request details; never persist them blindly.
         meta["error_type"] = type(exc).__name__
         code = getattr(exc, "status_code", None)
