@@ -27,7 +27,7 @@ def valid_timestamp(value):
         if minutes >= 60 or hours > 14 or (hours == 14 and minutes):
             return False
     try:
-        parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
+        parsed = datetime.fromisoformat(value)
     except ValueError:
         return False
     return parsed.utcoffset() is not None
