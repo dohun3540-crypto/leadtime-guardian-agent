@@ -1,7 +1,6 @@
-"""원본을 수정하거나 압축 해제하지 않는 PDF 인벤토리 검사.
+"""원본 무변경 PDF 검사. python -m qa.inventory --root . --out 새경로.
 
-실행: python -m qa.inventory --root . --out /tmp/leadtime-qa-new
-출력 디렉터리는 새로 생성한다. 사람 검수나 Studio 실행을 추정하지 않는다.
+기계 검사는 사람 검수·Studio 실행·Gold 승인과 다르다.
 """
 
 import argparse
@@ -27,7 +26,7 @@ REVIEW_COLUMNS = [
 
 
 def strict_json(text):
-    """중복 키 및 비표준 숫자는 원문 오류로 거절한다."""
+    """중복 키와 비표준 숫자를 거절한다."""
     def pairs(items):
         result = {}
         for key, value in items:
@@ -43,18 +42,20 @@ def strict_json(text):
 
 
 def safe_name(name):
-    """절대 경로·상위 경로·역슬래시 및 비정규 경로를 거절한다."""
     if not isinstance(name, str) or not name or "\\" in name or ":" in name:
         raise ValueError("잘못된 경로")
+    if any(ord(char) < 32 for char in name):
+        raise ValueError("경로 제어문자 거절")
     path = PurePosixPath(name)
-    if path.is_absolute() or ".." in path.parts or path.as_posix() != name:
+    if (not path.parts or path.is_absolute() or ".." in path.parts
+            or path.as_posix() != name):
         raise ValueError(f"안전하지 않은 경로: {name}")
     return path
 
 
 def read_local(root, relative):
-    """저장소 밖 경로와 심볼릭 링크를 따라가지 않는다."""
-    path = root
+    """신뢰된 로컬 체크아웃에서 링크를 따라가지 않고 제한된 바이트를 읽는다."""
+    path = Path(root)
     for part in safe_name(relative).parts:
         path = path / part
         if path.is_symlink():
@@ -63,20 +64,22 @@ def read_local(root, relative):
         return None
     if not path.is_file() or path.stat().st_size > MAX_FILE_BYTES:
         raise ValueError(f"파일 유형 또는 크기 제한: {relative}")
-    return path.read_bytes()
+    with path.open("rb") as stream:
+        data = stream.read(MAX_FILE_BYTES + 1)
+    if len(data) > MAX_FILE_BYTES:
+        raise ValueError(f"파일 크기 제한: {relative}")
+    return data
 
 
 def archive_pdfs(path, allowed):
-    """허용 목록에 있는 일반 PDF만 메모리로 읽는다. 디스크 복원 없음."""
-    result = {}
-    total = 0
-    seen = set()
-    with tarfile.open(path, "r:xz") as archive:
+    """파일 경로 또는 바이트 스냅샷에서 허용 PDF만 읽는다. 디스크 해제 없음."""
+    result, seen, total = {}, set(), 0
+    options = {"fileobj": io.BytesIO(path)} if isinstance(path, bytes) else {"name": path}
+    with tarfile.open(mode="r:xz", **options) as archive:
         for index, member in enumerate(archive):
             if index >= 1000:
                 raise ValueError("아카이브 항목 수 제한")
             name = member.name
-            # 일반 tar의 ./ 접두사 한 개만 명시적으로 허용한다.
             if name.startswith("./"):
                 name = name[2:]
             if member.isdir():
@@ -134,24 +137,30 @@ def manifest_entries(root):
         if raw is None:
             raise FileNotFoundError(f"{folder}/manifest.json")
         manifest = strict_json(raw.decode("utf-8"))
+        if not isinstance(manifest, dict):
+            raise ValueError(f"manifest 객체 필요: {case_id}")
         docs = manifest.get("documents")
         if manifest.get("case_id") != case_id or not isinstance(docs, list):
-            raise ValueError(f"manifest 케이스 또는 문서 배열 오류: {case_id}")
-        if len(docs) != 3 or {d.get("document_type") for d in docs} != KINDS:
+            raise ValueError(f"manifest 케이스 또는 배열 오류: {case_id}")
+        if len(docs) != 3 or not all(isinstance(d, dict) for d in docs):
+            raise ValueError(f"문서 객체 3개 필요: {case_id}")
+        if {d.get("document_type") for d in docs} != KINDS:
             raise ValueError(f"문서 3종 구성 오류: {case_id}")
         identifiers, names = set(), set()
         for doc in docs:
             filename = doc.get("filename")
             if len(safe_name(filename).parts) != 1 or not filename.endswith(".pdf"):
                 raise ValueError(f"PDF 파일명 오류: {case_id}")
-            did = doc.get("document_id")
-            digest = doc.get("sha256")
+            did, digest = doc.get("document_id"), doc.get("sha256")
             if not isinstance(did, str) or not did.strip() or did in identifiers:
                 raise ValueError(f"문서 ID 누락·중복: {case_id}")
             if filename in names or not isinstance(digest, str):
                 raise ValueError(f"파일명 중복 또는 해시 누락: {case_id}")
             if not re.fullmatch(r"[0-9a-f]{64}", digest):
                 raise ValueError(f"SHA-256 형식 오류: {case_id}")
+            pages = doc.get("pages")
+            if pages is not None and (type(pages) is not int or pages < 1):
+                raise ValueError(f"페이지 수 형식 오류: {case_id}")
             identifiers.add(did)
             names.add(filename)
             entries.append((case_id, folder, doc, manifest))
@@ -165,22 +174,20 @@ def collect(root):
                if cid != "SYN-C001"}
     archive_path = "data/cases/SYN-C002-C020_DRAFT_PDFs.tar.xz"
     archive_bytes = read_local(root, archive_path)
-    archived = archive_pdfs(io.BytesIO(archive_bytes), allowed) if False else {}
-    # tarfile.open의 fileobj를 쓰도록 원본 경로를 안전 검사 후 전달한다.
-    if archive_bytes is not None:
-        archived = archive_pdfs(root / archive_path, allowed)
+    # 해시와 PDF 검사가 동일한 원본 바이트 스냅샷을 사용한다.
+    archived = archive_pdfs(archive_bytes, allowed) if archive_bytes is not None else {}
     rows, text_pages = [], []
     for cid, folder, doc, manifest in entries:
         relative = f"{folder}/{doc['filename']}"
-        local = read_local(root, relative)
-        packed = archived.get(relative)
+        local, packed = read_local(root, relative), archived.get(relative)
         conflict = local is not None and packed is not None and local != packed
         data = local if local is not None else packed
         row = {
             "case_id": cid, "document_id": doc["document_id"],
             "document_type": doc["document_type"], "filename": doc["filename"],
-            "source_path": relative, "source_storage": "local" if local is not None
-            else ("archive" if packed is not None else "missing"),
+            "source_path": relative,
+            "source_storage": "local" if local is not None else (
+                "archive" if packed is not None else "missing"),
             "file_exists": data is not None, "local_file_exists": local is not None,
             "expected_sha256": doc["sha256"], "sha256": None,
             "expected_page_count": doc.get("pages"), "page_count": None,
@@ -188,7 +195,7 @@ def collect(root):
             "label_status": "DRAFT", "human_reviewed": None,
             "human_review_status": "NOT_VERIFIED", "studio_executed": None,
             "manifest_studio_executed": manifest.get("studio_executed"),
-            "status": "BLOCKED", "reason": "原本 파일 없음",
+            "status": "BLOCKED", "reason": "원본 파일 없음",
         }
         if data is not None:
             digest = hashlib.sha256(data).hexdigest()
@@ -196,23 +203,25 @@ def collect(root):
             match = digest == doc["sha256"]
             row.update(sha256=digest, page_count=count, source_text_available=available,
                        manifest_match=match, status=status, reason=reason)
-            if conflict or not match or (doc.get("pages") is not None
-                                        and count is not None and count != doc["pages"]):
+            wrong_pages = (doc.get("pages") is not None and count is not None
+                           and count != doc["pages"])
+            if conflict or not match or wrong_pages:
                 row.update(status="FAIL", reason="원본 복사본·해시·페이지 수 불일치")
             for page, text in enumerate(texts, 1):
-                text_pages.append({"case_id": cid, "document_id": doc["document_id"],
-                                   "source_file_sha256": digest, "page": page,
-                                   "text": text, "human_reviewed": False,
-                                   "source": "pypdf", "visual_review": "NOT_RUN"})
+                text_pages.append({
+                    "case_id": cid, "document_id": doc["document_id"],
+                    "source_filename": doc["filename"], "source_file_sha256": digest,
+                    "page": page, "text": text, "human_reviewed": False,
+                    "source": "pypdf", "visual_review": "NOT_RUN",
+                })
         rows.append(row)
     hashes = {}
     for row in rows:
         if row["sha256"]:
             hashes.setdefault(row["sha256"], []).append(row["source_path"])
     duplicates = {key: paths for key, paths in hashes.items() if len(paths) > 1}
-    return rows, text_pages, duplicates, (
-        hashlib.sha256(archive_bytes).hexdigest() if archive_bytes is not None else None
-    )
+    archive_hash = hashlib.sha256(archive_bytes).hexdigest() if archive_bytes else None
+    return rows, text_pages, duplicates, archive_hash
 
 
 def main():
@@ -223,6 +232,8 @@ def main():
     root, out = Path(args.root).resolve(), Path(args.out).resolve()
     if out == root or root / "data" == out or root / "data" in out.parents:
         raise ValueError("원본 data 아래에는 출력할 수 없음")
+    if out.exists():
+        raise FileExistsError("출력은 새 디렉터리만 허용")
     rows, pages, duplicates, archive_hash = collect(root)
     out.mkdir(parents=True, exist_ok=False)
     with (out / "DATA_INVENTORY.csv").open("x", encoding="utf-8", newline="") as stream:
@@ -234,15 +245,16 @@ def main():
             stream.write(json.dumps(page, ensure_ascii=False) + "\n")
     statuses = {row["status"] for row in rows}
     status = "FAIL" if "FAIL" in statuses else (
-        "BLOCKED" if "BLOCKED" in statuses or duplicates else "PASS"
-    )
-    report = {"status": status, "scope": "원본 기계 검사만; 사람 검수·성능 평가 아님",
-              "created_at": datetime.now(timezone.utc).isoformat(),
-              "archive_sha256": archive_hash, "documents": len(rows),
-              "status_counts": {s: sum(r["status"] == s for r in rows)
-                                for s in ("PASS", "FAIL", "BLOCKED")},
-              "duplicate_hashes": duplicates, "human_review": "NOT_RUN",
-              "studio_evaluation": "NOT_RUN", "visual_review": "NOT_RUN"}
+        "BLOCKED" if "BLOCKED" in statuses or duplicates else "PASS")
+    report = {
+        "status": status, "scope": "원본 기계 검사만; 사람 검수·성능 평가 아님",
+        "created_at": datetime.now(timezone.utc).isoformat(),
+        "archive_sha256": archive_hash, "documents": len(rows),
+        "status_counts": {s: sum(r["status"] == s for r in rows)
+                          for s in ("PASS", "FAIL", "BLOCKED")},
+        "duplicate_hashes": duplicates, "human_review": "NOT_RUN",
+        "studio_evaluation": "NOT_RUN", "visual_review": "NOT_RUN",
+    }
     with (out / "INVENTORY_REPORT.json").open("x", encoding="utf-8") as stream:
         json.dump(report, stream, ensure_ascii=False, indent=2)
     print(json.dumps(report, ensure_ascii=False))
