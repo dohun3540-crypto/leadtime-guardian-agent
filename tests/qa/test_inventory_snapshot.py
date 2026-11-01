@@ -4,7 +4,6 @@ import io
 import tarfile
 
 import pytest
-from pypdf import PdfWriter
 
 from qa.inventory import archive_pdfs, inspect_pdf, safe_name
 
@@ -27,7 +26,8 @@ def test_empty_or_control_path_rejected(name):
 
 
 def test_blank_page_is_not_source_text():
-    writer = PdfWriter()
+    pypdf = pytest.importorskip("pypdf", reason="PDF 시험은 qa/requirements.txt 필요")
+    writer = pypdf.PdfWriter()
     writer.add_blank_page(width=100, height=100)
     buffer = io.BytesIO()
     writer.write(buffer)
@@ -40,7 +40,8 @@ def test_invalid_pdf_is_failure():
 
 
 def test_encrypted_pdf_is_blocked():
-    writer = PdfWriter()
+    pypdf = pytest.importorskip("pypdf", reason="PDF 시험은 qa/requirements.txt 필요")
+    writer = pypdf.PdfWriter()
     writer.add_blank_page(width=100, height=100)
     writer.encrypt("unit-test-only")
     buffer = io.BytesIO()

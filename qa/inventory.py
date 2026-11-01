@@ -10,7 +10,7 @@ import io
 import json
 import re
 import tarfile
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path, PurePosixPath
 
 MAX_FILE_BYTES = 20 * 1024 * 1024
@@ -79,9 +79,7 @@ def archive_pdfs(path, allowed):
         for index, member in enumerate(archive):
             if index >= 1000:
                 raise ValueError("아카이브 항목 수 제한")
-            name = member.name
-            if name.startswith("./"):
-                name = name[2:]
+            name = member.name.removeprefix("./")
             if member.isdir():
                 if name in {"", "."}:
                     continue
@@ -114,6 +112,7 @@ def inspect_pdf(data):
         return None, None, [], "FAIL", "PDF 헤더 오류"
     try:
         from pypdf import PdfReader
+        from pypdf.errors import PyPdfError
     except ImportError:
         return None, None, [], "BLOCKED", "pypdf 설치 필요"
     try:
@@ -124,7 +123,7 @@ def inspect_pdf(data):
         if not texts:
             return 0, False, [], "FAIL", "페이지 없음"
         return len(texts), any(t.strip() for t in texts), texts, "PASS", ""
-    except Exception as exc:
+    except (PyPdfError, ValueError, TypeError, KeyError, IndexError, OSError) as exc:
         return None, None, [], "FAIL", f"PDF 분석 실패: {type(exc).__name__}"
 
 
@@ -138,7 +137,7 @@ def manifest_entries(root):
             raise FileNotFoundError(f"{folder}/manifest.json")
         manifest = strict_json(raw.decode("utf-8"))
         if not isinstance(manifest, dict):
-            raise ValueError(f"manifest 객체 필요: {case_id}")
+            raise TypeError(f"manifest 객체 필요: {case_id}")
         docs = manifest.get("documents")
         if manifest.get("case_id") != case_id or not isinstance(docs, list):
             raise ValueError(f"manifest 케이스 또는 배열 오류: {case_id}")
@@ -248,7 +247,7 @@ def main():
         "BLOCKED" if "BLOCKED" in statuses or duplicates else "PASS")
     report = {
         "status": status, "scope": "원본 기계 검사만; 사람 검수·성능 평가 아님",
-        "created_at": datetime.now(timezone.utc).isoformat(),
+        "created_at": datetime.now(UTC).isoformat(),
         "archive_sha256": archive_hash, "documents": len(rows),
         "status_counts": {s: sum(r["status"] == s for r in rows)
                           for s in ("PASS", "FAIL", "BLOCKED")},
