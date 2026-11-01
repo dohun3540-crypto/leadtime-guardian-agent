@@ -1,4 +1,17 @@
-# 팀원 2 Studio V6 통합 점검 — 2026-10-31 KST
+# 팀원 2 개인 Work 실행 — 2026-11-01 KST
+
+최신 개인 Work 결과는 [실행 보고](member2_v6/20261101_work/REPORT.md), [Studio 프롬프트](member2_v6/20261101_work/STUDIO_AI_PROMPT.txt), [원본 회수 체크리스트](member2_v6/20261101_work/RETURN_CHECKLIST.md)를 우선한다.
+
+- 시작 시 PR #11 f196c694…, PR #12 7897641… 및 기존 CI success를 재조회. 새 원격 copy 브랜치도 f196c694…와 같은 내용임을 확인.
+- 기준 80개(18.17초)·현재 189개(19.20초) pytest와 Ruff를 이번에 실제 재실행. PDF 60개 해시 일치. 추가 core/테스트 수정 없음.
+- 저장된 실제 V4 C001을 strict 경계로 재생해 0/60/60 EA, 60,500 KRW. 신규 Studio 실행이 아님.
+- 사용자가 GitHub와 main ZIP을 참고하도록 안내해 모두 확인했지만 새 공용 문서·QA Sandbox 원본·운영 최신 설정/예측은 없었음. 해당 실측만 BLOCKED 유지.
+- 새 공지의 QA Sandbox #5와 과거 사용자 V5 export의 동일성은 미확인. 숫자나 Python 작업명 V6로 운영/Sandbox를 식별하지 않음.
+- 우선 케이스 PDF 12개·해시·기존 스키마·Studio 전용 프롬프트를 별도 입력 패키지로 준비. 신규 Job/live API 호출 0건, 사람 검수·독립 QA·최종 통합 미완료.
+
+---
+
+# 팀원 2 Studio V6 통합 점검 — 2026-10-31 KST (이전 기록)
 
 최신 상태는 [팀원 2 검증 표](member2_v6/VALIDATION_MATRIX.md), [문제 기록](member2_v6/ISSUE_REGISTER.md), [Studio 전달 계약과 요청 목록](member2_v6/GITHUB_STUDIO_HANDOFF.md)을 우선한다.
 
