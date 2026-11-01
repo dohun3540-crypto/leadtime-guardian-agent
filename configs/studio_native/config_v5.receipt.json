@@ -1,0 +1,14 @@
+{
+  "artifact_type": "user_supplied_studio_configuration_not_prediction",
+  "sha256": "890e3a9c5fa6dfa05d4df04a7c9b1ab82b1b984baf4a382c406b2ffce7d747e3",
+  "source_filename": "LeadTime Guardian - B+C3 V1.json",
+  "exportedFrom": {
+    "workflowId": "agt_bXRXFSAgFmBayPjZF7VqRQ",
+    "workflowName": "LeadTime Guardian - B+C3 V1",
+    "configId": "cfg_o645qH9hDUgVnkrjw7Vets",
+    "configVer": 5
+  },
+  "exportedAt": "2026-10-30T13:56:46.257Z",
+  "workflow_import_tested": false,
+  "studio_execution_proven": false
+}

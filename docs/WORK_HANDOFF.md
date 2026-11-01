@@ -1,4 +1,44 @@
-# Chrome Work checkpoint - 2026-10-30 KST (latest, supersedes historical status below)
+# 팀원 2 개인 Work 실행 — 2026-11-01 KST
+
+최신 개인 Work 결과는 [실행 보고](member2_v6/20261101_work/REPORT.md), [Studio 프롬프트](member2_v6/20261101_work/STUDIO_AI_PROMPT.txt), [원본 회수 체크리스트](member2_v6/20261101_work/RETURN_CHECKLIST.md)를 우선한다.
+
+- 시작 시 PR #11 f196c694…, PR #12 7897641… 및 기존 CI success를 재조회. 새 원격 copy 브랜치도 f196c694…와 같은 내용임을 확인.
+- 기준 80개(18.17초)·현재 189개(19.20초) pytest와 Ruff를 이번에 실제 재실행. PDF 60개 해시 일치. 추가 core/테스트 수정 없음.
+- 저장된 실제 V4 C001을 strict 경계로 재생해 0/60/60 EA, 60,500 KRW. 신규 Studio 실행이 아님.
+- 사용자가 GitHub와 main ZIP을 참고하도록 안내해 모두 확인했지만 새 공용 문서·QA Sandbox 원본·운영 최신 설정/예측은 없었음. 해당 실측만 BLOCKED 유지.
+- 새 공지의 QA Sandbox #5와 과거 사용자 V5 export의 동일성은 미확인. 숫자나 Python 작업명 V6로 운영/Sandbox를 식별하지 않음.
+- 우선 케이스 PDF 12개·해시·기존 스키마·Studio 전용 프롬프트를 별도 입력 패키지로 준비. 신규 Job/live API 호출 0건, 사람 검수·독립 QA·최종 통합 미완료.
+
+---
+
+# 팀원 2 Studio V6 통합 점검 — 2026-10-31 KST (이전 기록)
+
+최신 상태는 [팀원 2 검증 표](member2_v6/VALIDATION_MATRIX.md), [문제 기록](member2_v6/ISSUE_REGISTER.md), [Studio 전달 계약과 요청 목록](member2_v6/GITHUB_STUDIO_HANDOFF.md)을 우선한다.
+
+- PR #11 HEAD `f196c694…`, 기존 PR #12 점검 HEAD `31fbdd12…` 및 각각 CI success를 재조회. 원격 변경 없음.
+- 기준 소스를 격리해 80개, 현재 소스에서 189개 pytest를 새로 실행했으며 Ruff도 각각 PASS. 이번에는 계산 코드·테스트를 추가 수정하지 않음.
+- tar 목록·경로·해시를 먼저 검사하고 원본 PDF 57개를 로컬 복원. C001 포함 60개 모두 manifest 일치, PDF/라벨 재생성 없음.
+- 저장된 실제 V4 C001 Native를 다시 Python 재생해 0/60/60 EA, 60,500 KRW 확인. 25필드 원문 텍스트를 기계 대조했으나 사람 검수·Gold 승인·PDF 검증 플래그는 미완료 유지.
+- Studio V6 개선 후보의 실제 Agent/Config/저장 version·Native 설정·예측은 미제공으로 BLOCKED. 앞선 Python 작업명 V6와 Studio 버전을 구분하며 V4/V5로 대체하지 않음.
+- 추가 제공 main ZIP은 원격 main의 21개 파일과 동일하며 PDF/V6 결과가 없음. 최신 PR 자료의 대체본으로 쓰지 않음.
+- 신규 Studio Job/live API 호출/구매/메일/병합 없음. 기존 PR #12 전용 브랜치를 재사용하고 이번 문서·실측 기록을 추가함.
+
+---
+
+# Python 안전성 V6 체크포인트 — 2026-10-30 KST (이전 기록)
+
+현재 작업 인계는 [Python 개발 보고서](PYTHON_SAFETY_V6_HANDOFF.md)를 우선한다. PR #11의 최신 HEAD `f196c694917f2d9e5f4ec228c752bd3f2a4eb882`에서 `codex/teammate-python-safety-v6` 브랜치를 분리했다. 기존 브랜치를 덮어쓰지 않는다.
+
+- 기존 pytest 80개/Ruff 재현 후 안전성 회귀를 보강해 189개/Ruff 통과.
+- 기존 실제 C001 v4 예측으로 0/60/60 EA, 60,500 KRW 재현. 새 Studio 실행은 아니다.
+- C013 실제 v5 Native 예측은 원격 두 브랜치에 없고 사용자에게도 없음. 실제 충돌 검증은 BLOCKED, 합성 충돌 차단만 PASS.
+- 사용자 제공 파일은 설정 v5이며 원본을 `configs/studio_native/config_v5.user-supplied.export.json`에 보존했다. 실행 결과로 사용하지 않는다.
+- C008 receipt_id 기반 부분 입고와 C017 ISO 입력은 합성 테스트 PASS. 실제 PDF 추출과 Evidence 검수는 NOT_RUN.
+- 라이브 Agents API 호출 0건, 실제 구매·메일 전송·병합 없음. 문서 스키마 유지, `studio-provenance/1` sidecar 추가.
+
+---
+
+# Chrome Work checkpoint - 2026-10-30 KST (이하 이전 기록)
 
 **User requested a preservation checkpoint due to remaining usage. Stop expanding features.**
 

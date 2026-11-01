@@ -1,0 +1,153 @@
+{
+  "artifact_kind": "studio_input_package_not_prediction",
+  "prepared_date_kst": "2026-11-01",
+  "audited_source_head": "7897641b75042d02bb29bce9e37a557bf4c7354e",
+  "priority_case_order": [
+    "SYN-C001",
+    "SYN-C013",
+    "SYN-C017",
+    "SYN-C008"
+  ],
+  "pdf_count": 12,
+  "source_pdf_hash_status": "PASS",
+  "upload_order_is_plan_not_job_evidence": true,
+  "new_studio_jobs": 0,
+  "operational_agent_id": null,
+  "operational_config_id": null,
+  "qa_sandbox_config_id": null,
+  "schema_sha256": "209b485732672e1ae0c26ab16aebf8658c87cf4a3f570aa1c2423134f6c8a8e3",
+  "pdfs": [
+    {
+      "case_id": "SYN-C001",
+      "document_type": "purchase_order",
+      "filename": "SYN-C001_purchase_order.pdf",
+      "package_path": "studio_inputs/SYN-C001/SYN-C001_purchase_order.pdf",
+      "sha256": "9246b69363e3cec3dca7654b14bc7facdb0f762e8ae72c42594f38efabadc930",
+      "hash_source": "personal_work_measured_source_bytes",
+      "bytes": 24899,
+      "upload_order_plan": 1,
+      "actual_uploaded": false
+    },
+    {
+      "case_id": "SYN-C001",
+      "document_type": "delivery_notice",
+      "filename": "SYN-C001_delivery_notice.pdf",
+      "package_path": "studio_inputs/SYN-C001/SYN-C001_delivery_notice.pdf",
+      "sha256": "7a5f7b8f025a79a0751a6b6c41e21292fc62c1c02cdd071048e38a66e4bf7f2b",
+      "hash_source": "personal_work_measured_source_bytes",
+      "bytes": 26421,
+      "upload_order_plan": 2,
+      "actual_uploaded": false
+    },
+    {
+      "case_id": "SYN-C001",
+      "document_type": "quotation",
+      "filename": "SYN-C001_quotation.pdf",
+      "package_path": "studio_inputs/SYN-C001/SYN-C001_quotation.pdf",
+      "sha256": "35c9deddbc06d0cb49c1e45cd859a95b97e2a9cde2ea5931d1f8ffe6dfc3c551",
+      "hash_source": "personal_work_measured_source_bytes",
+      "bytes": 29272,
+      "upload_order_plan": 3,
+      "actual_uploaded": false
+    },
+    {
+      "case_id": "SYN-C013",
+      "document_type": "purchase_order",
+      "filename": "SYN-C013_purchase_order.pdf",
+      "package_path": "studio_inputs/SYN-C013/SYN-C013_purchase_order.pdf",
+      "sha256": "8616adc32f2a12495586c674020011174d2c97812b3bced9638bc91f221ee2d9",
+      "hash_source": "personal_work_measured_source_bytes",
+      "bytes": 22952,
+      "upload_order_plan": 1,
+      "actual_uploaded": false
+    },
+    {
+      "case_id": "SYN-C013",
+      "document_type": "delivery_notice",
+      "filename": "SYN-C013_delivery_notice.pdf",
+      "package_path": "studio_inputs/SYN-C013/SYN-C013_delivery_notice.pdf",
+      "sha256": "f4d7446b540c7dd2a50cf566ba47982cc4fcc8ce1230743d8175239eac9d2bfb",
+      "hash_source": "personal_work_measured_source_bytes",
+      "bytes": 23857,
+      "upload_order_plan": 2,
+      "actual_uploaded": false
+    },
+    {
+      "case_id": "SYN-C013",
+      "document_type": "quotation",
+      "filename": "SYN-C013_quotation.pdf",
+      "package_path": "studio_inputs/SYN-C013/SYN-C013_quotation.pdf",
+      "sha256": "590a11d68814d8e35ba1dee1734a71791b703b464dd87f3661fab8ea5bdbd735",
+      "hash_source": "personal_work_measured_source_bytes",
+      "bytes": 24235,
+      "upload_order_plan": 3,
+      "actual_uploaded": false
+    },
+    {
+      "case_id": "SYN-C017",
+      "document_type": "purchase_order",
+      "filename": "SYN-C017_purchase_order.pdf",
+      "package_path": "studio_inputs/SYN-C017/SYN-C017_purchase_order.pdf",
+      "sha256": "22d5f85e9bfe46d759ff57c079e02db11ca949e81de02119d88eb4add6ac6ab6",
+      "hash_source": "personal_work_measured_source_bytes",
+      "bytes": 23814,
+      "upload_order_plan": 1,
+      "actual_uploaded": false
+    },
+    {
+      "case_id": "SYN-C017",
+      "document_type": "delivery_notice",
+      "filename": "SYN-C017_delivery_notice.pdf",
+      "package_path": "studio_inputs/SYN-C017/SYN-C017_delivery_notice.pdf",
+      "sha256": "17f06614b3fcc1a0e33eb6d48199768d8a02a32b48bff0b91cabdecd2a993e2e",
+      "hash_source": "personal_work_measured_source_bytes",
+      "bytes": 24708,
+      "upload_order_plan": 2,
+      "actual_uploaded": false
+    },
+    {
+      "case_id": "SYN-C017",
+      "document_type": "quotation",
+      "filename": "SYN-C017_quotation.pdf",
+      "package_path": "studio_inputs/SYN-C017/SYN-C017_quotation.pdf",
+      "sha256": "aad4125f7501653211fcd764c163930f74a3c031b5681d0bdee01c9fbd8b654c",
+      "hash_source": "personal_work_measured_source_bytes",
+      "bytes": 25126,
+      "upload_order_plan": 3,
+      "actual_uploaded": false
+    },
+    {
+      "case_id": "SYN-C008",
+      "document_type": "purchase_order",
+      "filename": "SYN-C008_purchase_order.pdf",
+      "package_path": "studio_inputs/SYN-C008/SYN-C008_purchase_order.pdf",
+      "sha256": "dd8e8b66ca5146c8a7098cd530f3d95ca68e0ff9e32dc96f0e5e7ad7e24addaa",
+      "hash_source": "personal_work_measured_source_bytes",
+      "bytes": 22979,
+      "upload_order_plan": 1,
+      "actual_uploaded": false
+    },
+    {
+      "case_id": "SYN-C008",
+      "document_type": "delivery_notice",
+      "filename": "SYN-C008_delivery_notice.pdf",
+      "package_path": "studio_inputs/SYN-C008/SYN-C008_delivery_notice.pdf",
+      "sha256": "ec6f04c0ad45889f3987347cfb89b64d52b50a82f9531f03916f9f30ea40ad61",
+      "hash_source": "personal_work_measured_source_bytes",
+      "bytes": 23856,
+      "upload_order_plan": 2,
+      "actual_uploaded": false
+    },
+    {
+      "case_id": "SYN-C008",
+      "document_type": "quotation",
+      "filename": "SYN-C008_quotation.pdf",
+      "package_path": "studio_inputs/SYN-C008/SYN-C008_quotation.pdf",
+      "sha256": "7b93b501dd48c77b1c981272666d1956a0fe1cda5cb7c2ba9c11992d72b59d92",
+      "hash_source": "personal_work_measured_source_bytes",
+      "bytes": 24235,
+      "upload_order_plan": 3,
+      "actual_uploaded": false
+    }
+  ]
+}

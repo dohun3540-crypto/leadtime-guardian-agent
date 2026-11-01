@@ -1,0 +1,11 @@
+{
+  "artifact_kind": "prepared_handoff_zip_not_studio_run",
+  "path_basename": "LeadTime_Guardian_Member2_Studio_Handoff_20261101.zip",
+  "sha256": "d25b00f013010e51a6132f4d28e34041a9b4f4605256a768f9b8ec5e01b084a8",
+  "bytes": 298084,
+  "entries": 30,
+  "pdfs": 12,
+  "pdf_bytes_match_manifest": true,
+  "originals_overwritten": 0,
+  "new_studio_jobs": 0
+}

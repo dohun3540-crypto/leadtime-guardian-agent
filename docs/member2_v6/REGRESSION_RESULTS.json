@@ -1,0 +1,44 @@
+{
+  "date_kst": "2026-10-31",
+  "python": "3.11.9",
+  "results": {
+    "reference_f196": {
+      "expected_tests": 80,
+      "module_path_scope": "isolated_git_archive_raw_blobs",
+      "checks": [
+        {
+          "command": "python -m pytest -q",
+          "status": "PASS",
+          "exit_code": 0,
+          "log": "reference_f196_pytest.txt"
+        },
+        {
+          "command": "python -m ruff check .",
+          "status": "PASS",
+          "exit_code": 0,
+          "log": "reference_f196_ruff.txt"
+        }
+      ]
+    },
+    "python_safety_31fb": {
+      "expected_tests": 189,
+      "module_path_scope": "current_branch",
+      "checks": [
+        {
+          "command": "python -m pytest -q",
+          "status": "PASS",
+          "exit_code": 0,
+          "log": "python_safety_31fb_pytest.txt"
+        },
+        {
+          "command": "python -m ruff check .",
+          "status": "PASS",
+          "exit_code": 0,
+          "log": "python_safety_31fb_ruff.txt"
+        }
+      ]
+    }
+  },
+  "live_agents_api_requests": 0,
+  "new_studio_executions": 0
+}

@@ -1,0 +1,130 @@
+{
+  "contract_version": "studio-provenance/1",
+  "export_sha256": "88387f8d6aee1421c9f628304c6b91811396b32da297d41b40e3d53c3d98dfea",
+  "studio_metadata_supplied": {
+    "step_run_id": "63f6a860-7c86-5036-b32d-6eae38ca7677",
+    "occurrence_id": "63f6a860-7c86-5036-b32d-6eae38ca7677",
+    "job_execution_id": "job_gPmEYKzuJdBA6BmKhVnujs",
+    "cache_hit": false,
+    "merge": {
+      "step_name": "MergeDocuments",
+      "items": [
+        {
+          "document_type": "purchase_order",
+          "page_ranges": [
+            [
+              1,
+              1
+            ]
+          ],
+          "source_files": [
+            {
+              "file_id": "file_Bs6tjfh4sxRzJmt4kozrnq",
+              "file_name": "SYN-C001_purchase_order.pdf",
+              "page_ranges": [
+                [
+                  1,
+                  1
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "document_type": "delivery_notice",
+          "page_ranges": [
+            [
+              2,
+              2
+            ]
+          ],
+          "source_files": [
+            {
+              "file_id": "file_ffcfsKVGLEpgJxC5fYUfPw",
+              "file_name": "SYN-C001_delivery_notice.pdf",
+              "page_ranges": [
+                [
+                  1,
+                  1
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "document_type": "quotation",
+          "page_ranges": [
+            [
+              3,
+              3
+            ]
+          ],
+          "source_files": [
+            {
+              "file_id": "file_67maXz23DwVzVwVeF6j7pk",
+              "file_name": "SYN-C001_quotation.pdf",
+              "page_ranges": [
+                [
+                  1,
+                  1
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "source_files": [
+      {
+        "file_id": "file_Bs6tjfh4sxRzJmt4kozrnq",
+        "file_name": "SYN-C001_purchase_order.pdf",
+        "page_ranges": [
+          [
+            1,
+            1
+          ]
+        ]
+      },
+      {
+        "file_id": "file_ffcfsKVGLEpgJxC5fYUfPw",
+        "file_name": "SYN-C001_delivery_notice.pdf",
+        "page_ranges": [
+          [
+            1,
+            1
+          ]
+        ]
+      },
+      {
+        "file_id": "file_67maXz23DwVzVwVeF6j7pk",
+        "file_name": "SYN-C001_quotation.pdf",
+        "page_ranges": [
+          [
+            1,
+            1
+          ]
+        ]
+      }
+    ]
+  },
+  "agents_job_id_supplied": null,
+  "business_validation_status": "COMPLETED",
+  "evidence_verified_against_pdf": false,
+  "documents": [
+    {
+      "document_id": "PO-DOC",
+      "evidence_supplied": [],
+      "evidence_status": "ABSENT"
+    },
+    {
+      "document_id": "NOTICE-DOC",
+      "evidence_supplied": [],
+      "evidence_status": "ABSENT"
+    },
+    {
+      "document_id": "QUOTE-DOC",
+      "evidence_supplied": [],
+      "evidence_status": "ABSENT"
+    }
+  ]
+}

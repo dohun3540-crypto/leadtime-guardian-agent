@@ -1,4 +1,10 @@
-# 2026-10-30 Chrome checkpoint update
+# 2026-10-30 Python 안전성 V6 업데이트
+
+전체 pytest 189개/Ruff PASS. FakeClient 18개, 실제 SDK loopback HTTP 13개를 포함한다. 폴링 중 Job ID 변경과 완료 이력 ID/상태 충돌도 원본 snapshot을 보존하고 차단한다. 라이브 Agents API 호출은 0건이다. 최신 계약은 [V6 인계](PYTHON_SAFETY_V6_HANDOFF.md)를 따른다. CLI `--run-id`는 관찰된 실제 Job ID와 같아야 한다.
+
+---
+
+# 2026-10-30 Chrome checkpoint update (이전 기록)
 
 Actual C001 Studio Web execution and Python integration succeeded (see `WORK_HANDOFF.md`). Live Agents API requests remain 0. Actual OpenAI SDK 2.54.0 + loopback HTTP server tests: 13 passed, separate from 13 FakeClient tests. Total suite 80 passed; Ruff passed.
 
