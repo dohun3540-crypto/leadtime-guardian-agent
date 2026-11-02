@@ -1,4 +1,5 @@
 import pytest
+
 from leadtime_guardian.analysis import analyze_case
 
 
