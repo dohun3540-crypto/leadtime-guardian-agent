@@ -1,25 +1,16 @@
-# 개발 계획: MVP부터 고도화까지
+# Development order — official 2026-10-30 KST schedule
 
-## 범위
-**MVP (반드시 완성):** 문서 분류 → 핵심 필드 추출 → 날짜·수량 유효성 확인 → 재고 부족·지연 위험 계산 → 대응 결과(JSON).
+**Final submission:** 2026-11-10 17:00 KST in the team's new official timetable. Replace previous Nov 11 assumption; recheck LMS.
 
-**확장 1:** 대체 공급업체 견적 비교, 긴급 구매 비용·납기 시나리오 2~3가지 추천, 사람이 확인할 수 있는 결과 근거.
+| Day | GitHub/ChatGPT deliverable | Human/Studio task | Acceptance |
+|---|---|---|---|
+| 10/30–31 | B+C3 deterministic engine, adapter, tests, schemas, PR review | check Large account and LMS; create Studio workflow | CI runs and one PDF uploads |
+| 11/01–02 | adjust schemas and prompts to native Studio format | run normal C001 and collect genuine prediction JSON | predicted extraction captured |
+| 11/03 | integrate actual extraction output | Mission 1 personal submission; test C013 conflict | PO mismatch blocked |
+| 11/04–05 | code bridge, metrics, C017 normalization | original PDF/gold cross-check and full run | real end-to-end case passes |
+| 11/06 | B stable, freeze mission deliverables | Mission 2 team submission | real Studio results archived |
+| 11/07–08 | C1 counterfactual, C2 evidence gate, C3 partial delivery regression fixes | retest actual Studio cases | C3 three demo tests pass |
+| 11/09 | docs, slides, eval report, demo script | capture demo; office hours; native export | complete submission bundle |
+| 11/10 | no speculative new features | final submit before 17:00 | LMS confirmation retained |
 
-**확장 2:** 누락·충돌 감지 및 재검토 플래그, 정답지 기준 필드별 정확도 리포트, 문서 업로드 UI, 이메일 초안, 승인 흐름.
-
-**제외:** ERP 실연동, 자동 발주, 실거래 이메일 자동 전송, 복잡한 다중 에이전트 오케스트레이션.
-
-## 날짜별 목표(KST)
-- 10/29~10/31: 입력/출력 스키마, 문서 케이스 정의, 합성 문서·정답지, Python 엔진.
-- 11/02: 교육 참가, Studio 권한·노드·JSON 내보내기 확인.
-- 11/03: 개인 Mission 1 완료.
-- 11/04~11/06: Studio 핵심 워크플로우·팀 데이터셋·Mission 2 완료.
-- 11/07~11/08: 시스템 통합, 재현 가능한 테스트, 대체 구매안 비교.
-- 11/09: 실패 사례 개선, 데모 영상, 워크플로우 설계서, 발표자료.
-- 11/10 17:00: 최종 제출(미리 제출 후 검증).
-
-## 고득점 방향(가설)
-심사 기준이 제공되지 않았으므로 가중치를 추정하지 않는다. 문서 처리 적합성, 비정형 문서 다양성, 자동화의 업무 가치, 재현 가능성, 예외 처리, 근거 제시, 데모 안정성을 중심으로 품질을 확보한다.
-
-## 제출 필수
-Studio 설정 JSON, 문서 20건 이상+정답 JSON+유형표, 1장 설계서, 실행 JSON, 영상, 발표 PDF.
+Prioritize B + real Studio evidence before C extensions. Do not claim synthetic PDFs or local pytest results as an actual Studio run.

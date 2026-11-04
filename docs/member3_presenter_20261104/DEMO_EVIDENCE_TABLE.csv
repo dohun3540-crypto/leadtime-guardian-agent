@@ -1,0 +1,6 @@
+case_id,claim,reference,status,execution_kind,workflow_id,config_id,operational_job_id,step_run_id,file_id,source_pdf_sha256,native_sha256,python_result_sha256,qa_job_id,approved_gold_sha256,next_owner
+C001,보관 계산에 부족 0→60 및 비용 60500.00 기록,data/results/studio_runs/C001_20261030_v4/analysis/analysis.json,ARCHIVE_CONTENT_READ,ARCHIVED_STUDIO,agt_bXRXFSAgFmBayPjZF7VqRQ,cfg_SZi6qfyZ6XFoNszpXQK5xQ,job_gPmEYKzuJdBA6BmKhVnujs,,,,,,,,윤현준·구도훈
+C013,발주·견적 PO1과 통보 PO999 원문 차이,SYN-C013 세 PDF 1쪽 기본정보 표,AI_SOURCE_COMPARED,NOT_EXECUTED,,,,,,,,,,,김민주
+C008,발주 R1 40·R2 60 중 통보는 R2만 변경,SYN-C008 발주·통보 1쪽 품목 표 및 통보 하단 문장,AI_SOURCE_COMPARED,NOT_EXECUTED,,,,,,,,,,,김민주
+C017,기존·변경·견적 날짜는 한글 11월 3일·8일·4일,SYN-C017 세 PDF 1쪽 날짜 행,AI_SOURCE_COMPARED,NOT_EXECUTED,,,,,,,,,,,김민주
+ALL,공식 정확도 미측정,승인 Gold 및 적격 예측 연결 평가 대기,NOT_MEASURED,NOT_EXECUTED,,,,,,,,,,,최유석

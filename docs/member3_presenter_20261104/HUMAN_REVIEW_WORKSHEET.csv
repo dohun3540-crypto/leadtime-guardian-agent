@@ -1,0 +1,8 @@
+case_id,document_role,source_path,check_item,reference_value,reference_kind,pdf_page,source_pdf_sha256,human_decision,reviewer,reviewed_at,approval_record_sha256,status
+SYN-C001,발주서,data/cases/SYN-C001/SYN-C001_purchase_order.pdf,발주번호와 입고 식별자,PO1 / R1,보관 TXT,,,,,,,NOT_VERIFIED
+SYN-C001,발주서,data/cases/SYN-C001/SYN-C001_purchase_order.pdf,수량과 기존 입고일,100 EA / 2026-11-03,보관 TXT,,,,,,,NOT_VERIFIED
+SYN-C001,변경통보,data/cases/SYN-C001/SYN-C001_delivery_notice.pdf,변경 대상과 변경일,PO1 / R1 / 2026-11-08,보관 TXT,,,,,,,NOT_VERIFIED
+SYN-C001,변경통보,data/cases/SYN-C001/SYN-C001_delivery_notice.pdf,수량 불변 조건,100 EA / 날짜만 변경,보관 TXT,,,,,,,NOT_VERIFIED
+SYN-C001,견적서,data/cases/SYN-C001/SYN-C001_quotation.pdf,견적 식별자와 참조 발주,Q1 / S1 / PO1,보관 TXT,,,,,,,NOT_VERIFIED
+SYN-C001,견적서,data/cases/SYN-C001/SYN-C001_quotation.pdf,가능량과 도착일,60 EA / 2026-11-04,보관 TXT,,,,,,,NOT_VERIFIED
+SYN-C001,견적서,data/cases/SYN-C001/SYN-C001_quotation.pdf,단가와 운송비 조건,1000 KRW/EA / 500 KRW 견적당 1회,보관 TXT,,,,,,,NOT_VERIFIED

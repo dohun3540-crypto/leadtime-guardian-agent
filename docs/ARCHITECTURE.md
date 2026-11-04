@@ -1,24 +1,22 @@
-# 시스템 구조
+# System Architecture — LeadTime Guardian V1
 
-```text
-PDF·메일·견적서
-   → Studio Parse
-   → Classify (발주서/납기 변경/견적/기타)
-   → Extract (발주번호, 제품, 수량, 가격, 기존·변경 납기)
-   → Instruct (문서 해석 및 누락 검증)
-   → 표준 JSON
-   → Python Rule Engine (입고 예정일, 주문 마감, 재고, 부족 수량)
-   → 구매 대안 비교·설명
-   → 검토자 승인용 결과 / 이메일 초안
+```mermaid
+flowchart LR
+  PDF[PO / Delay Notice / Supplier Quote PDF] --> ST[Upstage Studio: Parse/Classify/Extract/Instruct]
+  ST --> AD[Validate and normalize JSON]
+  CSV[Inventory / Inbound / Customer Orders / Quote CSV] --> AD
+  AD --> PY[Python: allocate stock by customer deadline]
+  PY --> Q[Feasible supplier quote comparison]
+  Q --> R[Risk / shortage JSON + approval-only email draft]
+  R --> H[Human review; no automatic purchase or send]
 ```
 
-## 원칙
-- LLM은 비정형 문서 해석, 설명 생성에 사용한다.
-- 금액/수량/날짜 계산은 Python에서 결정론적으로 처리한다.
-- 추출되지 않은 값은 추측하지 않고 null 및 needs_review로 표시한다.
-- 원본 문서와 산출물의 문서 ID를 연결한다.
-- 서로 다른 문서의 동일 발주번호/제품 매칭 오류를 검증한다.
-- 실제 Studio API 요청 형식은 교육과 계정 권한 확인 후 확정한다.
+## Roles and contracts
+AI handles unstructured documents and explanations only. Python owns dates, quantities, capacity, monetary amounts. Target normalized extraction JSON includes `document_id,document_type,po_id,supplier_id,original_delivery,revised_delivery,items[],quote,warnings`. Engine input is a single `case_id`, `snapshot_date`, `inventory[]`, `inbound[]`, `orders[]`, `quotes[]`. Engine output is `schema_version,case_id,status,delays[],impacted_orders[],supplier_options[],uncovered_quantity,needs_review,review_flags,execution_status,external_action_taken`. All input dates ISO YYYY-MM-DD, quantities nonnegative integer EA, prices KRW decimal strings.
 
-## MVP 가정
-현재 계산 엔진은 한 고객 주문과 한 입고 건을 대상으로 한다. 부분 입고, 다수 주문 배분, 선예약, 휴일, 리드타임 불확실성은 고도화 단계에서 명시적으로 확장한다.
+## Algorithm
+For each SKU sort customer orders by due date then order ID. Add inbound batches with ETA <= customer's deadline. Allocate min(request, currently available) and never reuse allocated stock. Compute `delay_days=max(0,eta-original_eta)`. Each eligible quote must arrive by deadline; consume its total capacity across orders and recommend priced quantities. Quote estimates are **per-order**; shipping may repeat on a quote allocated across multiple orders and must not be treated as approved global total. No business-calendar, BOM, quality losses, reserved-stock sync, ERP API, or global optimization.
+Invalid PO/product/unit joins, duplicate IDs, missing dates, or bad amounts are not inferred: block and flag for review. Final purchase/email needs human approval (the MVP has no send action).
+
+## Integration
+Current runnable interface: `leadtime_guardian.engine.analyze_portfolio(payload)->dict`, `scripts/run_portfolio_demo.py`. A proposed `POST /v1/analyze` is **not implemented**. Studio Export Agent Config JSON is an external artifact, never synthesized. API key in local environment only. C modules for scenarios/evidence/optimizer can be added without changing the V1 calculation contract. Official: https://console.upstage.ai/docs/agents ; https://console.upstage.ai/ko/docs/studio/key-features
