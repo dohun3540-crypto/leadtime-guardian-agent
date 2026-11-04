@@ -1,0 +1,6 @@
+case_id,claim,reference,status,execution_kind,workflow_id,config_id,operational_job_id,step_run_id,file_id,source_pdf_sha256,native_sha256,python_result_sha256,qa_job_id,approved_gold_sha256,next_owner
+C001,부족 0→60 및 견적 60500 KRW,통합 최종검증 문서 2쪽 수락 조건,NOT_VERIFIED,DRAFT,,,,,,,,,,,윤현준·구도훈
+C013,PO1과 PO999 충돌 차단,통합 최종검증 문서 2쪽 수락 조건,NOT_VERIFIED,DRAFT,,,,,,,,,,,윤현준·구도훈
+C008,R1 40 R2 60 및 R2만 이동,통합 최종검증 문서 2쪽 수락 조건,NOT_VERIFIED,DRAFT,,,,,,,,,,,김민주·윤현준
+C017,한글 날짜 원문과 ISO 값 대조,통합 최종검증 문서 2쪽 수락 조건,NOT_VERIFIED,DRAFT,,,,,,,,,,,김민주·윤현준
+ALL,공식 정확도,승인 Gold와 적격 예측 필요,NOT_MEASURED,DRAFT,,,,,,,,,,,최유석
